@@ -3,6 +3,9 @@ nav, footer {
   padding: 10px 10px;
   background-color: #f24d16
 }
+.body-wrapper {
+  height: 85vh;
+}
 .title-wrapper {
   text-align: center;
 }

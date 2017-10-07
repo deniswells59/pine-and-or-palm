@@ -14,8 +14,9 @@ class App extends Component {
       <div>
         <Header />
         <BrowserRouter>
-          <div>
+          <div className="body-wrapper">
             <Route exact path="/" component={ Home } />
+
           </div>
         </BrowserRouter>
         <AudioPlayer />
