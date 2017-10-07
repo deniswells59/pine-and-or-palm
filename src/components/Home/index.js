@@ -1,135 +1,126 @@
 import React, { Component } from 'react';
 import './style.css';
 
+const SPACING = 20,
+      ROWS = Math.max((window.innerHeight - 100) / SPACING),
+      COLS = Math.max(window.innerWidth / SPACING),
+      CIRCLE_PARTICLES = ROWS * COLS ,
+      THICKNESS = Math.pow(100, 2 ),
+      MARGIN = 0,
+      COLOR = 117,
+      DRAG = 0.95,
+      EASE = 0.25;
+
+let bounds, container,
+    mouse, canvas,
+    stats,
+    ctx,
+    list = [],
+    tog = true,
+    dx, dy,
+    mouseX, mouseY,
+    d, t, f,
+    a, b, n,
+    w, h,
+    s, r;
+
+let circle = {
+  vx: 0,
+  vy: 0,
+  x: 0,
+  y: 0
+};
+
 class Home extends Component {
   constructor(props) {
     super(props);
+
+    this.step = this.step.bind(this);
   }
 
   componentDidMount() {
-    const SPACING = 20,
-          ROWS = Math.max((window.innerHeight - 100) / SPACING),
-          COLS = Math.max(window.innerWidth / SPACING),
-          CIRCLE_PARTICLES = ROWS * COLS ,
-          THICKNESS = Math.pow(100, 2 ),
-          MARGIN = 0,
-          COLOR = 117,
-          DRAG = 0.95,
-          EASE = 0.25;
-
-    console.log(CIRCLE_PARTICLES);
-    let bounds, container,
-        mouse, canvas,
-        stats,
-        ctx,
-        list = [],
-        tog = true,
-        dx, dy,
-        mouseX, mouseY,
-        d, t, f,
-        a, b,
-        i, n,
-        w, h,
-        s, r;
-
-    let circle = {
-      vx: 0,
-      vy: 0,
-      x: 0,
-      y: 0
-    };
-
-    function init() {
-
-      container = document.getElementById( 'canvas-container' );
-      canvas = document.createElement( 'canvas' );
-
-      ctx = canvas.getContext( '2d' );
-
-      w = canvas.width = COLS * SPACING + MARGIN * 2;
-      h = canvas.height = ROWS * SPACING + MARGIN * 2;
-
-      // container.style.marginLeft = Math.round( w * -0.5 ) + 'px';
-      // container.style.marginTop = Math.round( h * -0.5 ) + 'px';
-
-      for ( i = 0; i < CIRCLE_PARTICLES; i++ ) {
-        let c = Object.create( circle );
-        c.x = c.ox = MARGIN + SPACING * ( i % COLS );
-        c.y = c.oy = MARGIN + SPACING * Math.floor( i / COLS );
-
-        list[i] = c;
-      }
-
-      container.addEventListener( 'mousemove', function(e) {
-        bounds = container.getBoundingClientRect();
-        mouseX = e.clientX - bounds.left;
-        mouseY = e.clientY - bounds.top;
-      });
-
-      container.appendChild( canvas );
-    }
-
-    function step() {
-      if ( tog = !tog ) {
-
-        for ( i = 0; i < CIRCLE_PARTICLES; i++ ) {
-          let c = list[i];
-
-          d = ( dx = mouseX - c.x ) * dx + ( dy = mouseY - c.y ) * dy;
-          f = -THICKNESS / d;
-
-          if ( d < THICKNESS ) {
-            t = Math.atan2( dy, dx );
-            c.vx += f * Math.cos(t);
-            c.vy += f * Math.sin(t);
-          }
-
-          c.x += ( c.vx *= DRAG ) + (c.ox - c.x) * EASE;
-          c.y += ( c.vy *= DRAG ) + (c.oy - c.y) * EASE;
-
-        }
-
-      } else {
-
-
-        let renderNodes = (list) => {
-          let ctx = canvas.getContext('2d');
-
-          let w = canvas.width;
-          let h = canvas.height;
-          let b = ( a = ctx.createImageData( w, h ) ).data;
-
-          for ( i = 0; i < list.length; i++ ) {
-            let c = list[i];
-            if(!c.size) c.size = 2;//random(-2, 3);
-
-            createNode(c, w, b);
-          }
-
-          ctx.putImageData( a, 0, 0 );
-        }
-
-        let createNode = (circle, width, pixel) => {
-          let size = circle.size;
-
-          for (let i = 0; i <= size; i++) { // X - Loop
-            for (let ii = 0; ii <= size; ii++) { // Y - Loop
-              let center = ((~~circle.x + i) + ( (~~circle.y + ii ) * width ) ) *  4;
-              pixel[center] = 237, pixel[center+1] = 216, pixel[center+2] = 52, pixel[center+3] = 200;
-            }
-          }
-
-        };
-
-        renderNodes(list);
-      }
-
-      requestAnimationFrame( step );
-    }
-
-    init();
-    step();
+    this.init();
+    this.step();
   }
+
+  init() {
+    container = document.getElementById( 'canvas-container' );
+    canvas = document.createElement( 'canvas' );
+
+    ctx = canvas.getContext( '2d' );
+
+    w = canvas.width = COLS * SPACING + MARGIN * 2;
+    h = canvas.height = ROWS * SPACING + MARGIN * 2;
+
+    // container.style.marginLeft = Math.round( w * -0.5 ) + 'px';
+    // container.style.marginTop = Math.round( h * -0.5 ) + 'px';
+
+    for (let i = 0; i < CIRCLE_PARTICLES; i++ ) {
+      let c = Object.create( circle );
+      c.x = c.ox = MARGIN + SPACING * ( i % COLS );
+      c.y = c.oy = MARGIN + SPACING * Math.floor( i / COLS );
+
+      list[i] = c;
+    }
+
+    container.addEventListener( 'mousemove', function(e) {
+      bounds = container.getBoundingClientRect();
+      mouseX = e.clientX - bounds.left;
+      mouseY = e.clientY - bounds.top;
+    });
+
+    container.appendChild( canvas );
+  }
+
+  step() {
+    if( tog = !tog ) {
+      for(let i = 0; i < CIRCLE_PARTICLES; i++) {
+        let c = list[i];
+
+        d = ( dx = mouseX - c.x ) * dx + ( dy = mouseY - c.y ) * dy;
+        f = -THICKNESS / d;
+
+        if ( d < THICKNESS ) {
+          t = Math.atan2( dy, dx );
+          c.vx += f * Math.cos(t);
+          c.vy += f * Math.sin(t);
+        }
+
+        c.x += ( c.vx *= DRAG ) + (c.ox - c.x) * EASE;
+        c.y += ( c.vy *= DRAG ) + (c.oy - c.y) * EASE;
+
+      }
+
+    } else {
+      let ctx = canvas.getContext('2d');
+
+      let w = canvas.width;
+      let h = canvas.height;
+      let b = ( a = ctx.createImageData( w, h ) ).data;
+
+      for (let i = 0; i < list.length; i++ ) {
+        let c = list[i];
+        if(!c.size) c.size = 2;//random(-2, 3);
+
+        this.createNode(c, w, b);
+      }
+
+      ctx.putImageData( a, 0, 0 );
+    }
+
+    requestAnimationFrame( this.step );
+  }
+
+  createNode (circle, width, pixel) {
+    let size = circle.size;
+
+    for (let i = 0; i <= size; i++) { // X - Loop
+      for (let ii = 0; ii <= size; ii++) { // Y - Loop
+        let center = ((~~circle.x + i) + ( (~~circle.y + ii ) * width ) ) *  4;
+        pixel[center] = 237, pixel[center+1] = 216, pixel[center+2] = 52, pixel[center+3] = 200;
+      }
+    }
+  };
 
   render() {
     return (

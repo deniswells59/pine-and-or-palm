@@ -20,8 +20,12 @@ h1.nav-title, h2.song-title {
   margin: 0 .5em;
 }
 h2.song-title  {
-  font-size: 5.5em;
+  font-size: 6em;
   float: left;
+  min-width: 400px;
+}
+h2.song-title#small {
+  min-width: 300px;
 }
 footer {
   padding: 0;
@@ -34,11 +38,12 @@ footer * {
   display: inline-block;
 }
 .marquee {
-  width: 200%;
-  transform: translate3d(0, -15px, 0);
+  width: 300%;
+  transform: translate3d(0, -20px, 0);
 }
-.playlist {
-  animation: marquee 45s infinite linear;
+.inner-marquee {
+  margin: 0 .5em;
+  animation: marquee 15s infinite linear;
 }
 
 @-webkit-keyframes marquee {

@@ -8,7 +8,7 @@ class Song extends Component {
   render() {
     return (
       <div className='song-wrapper'>
-        <h2 className='song-title' data-name={ this.props.name }>
+        <h2 id={this.props.id} className='song-title' data-name={ this.props.name }>
           { this.props.name }
           <span className='song-break'> - </span>
         </h2>
