@@ -18,7 +18,7 @@ class App extends Component {
             <Route exact path="/" component={ Home } />
           </div>
         </BrowserRouter>
-
+        <AudioPlayer />
       </div>
     );
   }

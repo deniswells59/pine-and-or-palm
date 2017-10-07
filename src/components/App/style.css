@@ -1,4 +1,4 @@
-nav {
+nav, footer {
   width: 100%;
   padding: 10px 10px;
   background-color: #f24d16
@@ -6,10 +6,51 @@ nav {
 .title-wrapper {
   text-align: center;
 }
-h1.nav-title {
+h1.nav-title, h2.song-title {
  margin: 0;
  font-family: 'Liquido';
  font-size: 2.5em;
  color: #edd834;
  letter-spacing: 4px;
+}
+.song-break {
+  margin: 0 .5em;
+}
+h2.song-title  {
+  font-size: 5.5em;
+  float: left;
+}
+footer {
+  padding: 0;
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+  max-height: 85px;
+}
+footer * {
+  display: inline-block;
+}
+.marquee {
+  width: 200%;
+  transform: translate3d(0, -15px, 0);
+}
+.playlist {
+  animation: marquee 45s infinite linear;
+}
+
+@-webkit-keyframes marquee {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-150%); }
+}
+@-moz-keyframes marquee {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-150%); }
+}
+@-o-keyframes marquee {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-150%); }
+}
+@keyframes marquee {
+  0%   { transform: translateX(100%); }
+  100% { transform: translateX(-150%); }
 }
