@@ -13,12 +13,12 @@ class App extends Component {
     super(props);
 
     this.state = {
-      colors: {main: '#490278',text: '#780278',background: '#FFFCE6',accent: '#140152'},
+      colors: {main: '#490278',text: '#140152', accent:'#780278', name:'purp'},
       listIndex: 0,
       list: [
-        {main: '#490278',text: '#780278',background: '#FFFCE6',accent: '#140152'},
-        {main: '#5CDB95',text: '#05386B', background: '#FFFCE6', accent: '#EDF5E1'},
-        {main: '#F24D16',text: '#FBEEC1', background: '#FFFCE6', accent: '#4CD4B0'},
+        {main: '#490278',text: '#140152', accent: '#780278', name: 'purp'},
+        {main: '#5CDB95',text: '#05386B', accent: '#EDF5E1', name: 'green'},
+        {main: '#F24D16',text: '#FBEEC1', accent: '#4CD4B0', name: 'retro'},
       ]
     }
 

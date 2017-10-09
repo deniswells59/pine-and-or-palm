@@ -1,14 +1,19 @@
 nav, footer {
   width: 100%;
-  padding: 10px 0;
+  padding: 5px 0;
   background-color: #f24d16;
 }
-nav, footer, h1.nav-title,
-h2.song-title, .song-break, .social a  {
+nav, footer, img.logo,
+h2.song-title, .song-break, .social a,
+.controls, .controls button {
   -webkit-transition: all 1s ease-out;
   -moz-transition: all 1s ease-out;
   -o-transition: all 1s ease-out;
   transition: all 1s ease-out;
+}
+img.logo {
+  width: auto;
+  height: 60px;
 }
 .body-wrapper {
   height: 85vh;
@@ -45,11 +50,11 @@ footer * {
   display: inline-block;
 }
 .marquee {
-  width: 300%;
+  width: 200%;
   transform: translate3d(0, -20px, 0);
 }
 .playlist {
-  animation: marquee 45s infinite linear;
+  animation: marquee 60s infinite linear;
 }
 .inner-marquee {
   margin: 0 .5em;
@@ -57,29 +62,29 @@ footer * {
 
 @-webkit-keyframes marquee {
   0%   { transform: translateX(80%); }
-  100% { transform: translateX(-150%); }
+  100% { transform: translateX(-100%); }
 }
 @-moz-keyframes marquee {
   0%   { transform: translateX(80%); }
-  100% { transform: translateX(-150%); }
+  100% { transform: translateX(-100%); }
 }
 @-o-keyframes marquee {
   0%   { transform: translateX(80%); }
-  100% { transform: translateX(-150%); }
+  100% { transform: translateX(-100%); }
 }
 @keyframes marquee {
   0%   { transform: translateX(80%); }
-  100% { transform: translateX(-150%); }
+  100% { transform: translateX(-100%); }
 }
 .social {
   float: left;
-  margin: 0em 2em;
+  margin: .5em 2em;
   position: absolute;
 }
 .social i.icon {
-  font-size: 1.2em;
+  font-size: 1em;
   position: absolute;
-  top: 30%;
+  top: 33%;
   left: 0;
   right: 0;
 }
@@ -96,10 +101,26 @@ footer * {
   height: 48px;
   margin: 0 .5em;
 }
+.audio-player {
+  max-height: 100px;
+}
 .controls {
   position: absolute;
   right: 50px;
-  top: 0px;
-  padding: 2em;
-  background-image: linear-gradient(to bottom, orange, transparent);
+  bottom: 75px;
+  padding: 1em;
+}
+button.audio-control {
+  background: none;
+  border: 1px solid;
+  font-size: 1.2em;
+  border-radius: 50%;
+  height: 38px;
+  width: 38px;
+  text-align: center;
+  margin: .5em;
+}
+button#pause {
+  height: 42px;
+  width: 42px;
 }

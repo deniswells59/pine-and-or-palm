@@ -27,11 +27,9 @@ class Header extends Component {
             {...this.props} />
         </div>
         <div className="title-wrapper">
-          <h1
-            style={{ 'color': this.props.colors.text }}
-            className='nav-title'>
-            PINE AND PALM
-          </h1>
+          <img
+            className='logo' 
+            src={`/assets/pandpheart_${this.props.colors.name}.png`} alt=""/>
         </div>
       </nav>
     );

@@ -7,20 +7,31 @@ class Song extends Component {
   }
 
   render() {
-    let active = 'inactive';
-    if(this.props.active) active = 'active';
+    let name = this.props.name.split('_').join(' '),
+        active = false,
+        color = this.props.colors.text,
+        dash = <span
+                 style={{ 'color': this.props.colors.text }}
+                 className='song-break'> - </span>;
+
+
+    if(this.props.name === this.props.track) {
+      color = this.props.colors.accent;
+    }
+
+    if(this.props.last) {
+      dash = null;
+    }
 
     return (
       <div className='song-wrapper'>
         <h2
-          style={{ 'color': this.props.active ? this.props.colors.accent : this.props.colors.text }}
+          style={{ 'color': color }}
           id={ this.props.id }
-          className={ `song-title ${active}` }
+          className='song-title'
           data-name={ this.props.name }>
-          { this.props.name }
-          <span
-            style={{ 'color': this.props.colors.text }}
-            className='song-break'> - </span>
+          { name }
+          { dash }
         </h2>
       </div>
     );
