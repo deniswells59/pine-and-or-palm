@@ -9,11 +9,6 @@ class AudioPlayer extends Component {
       interval: null,
       translate3d: 0,
       marquee: null,
-      playlist: [
-        <Playlist key='1' />,
-        <Playlist key='2' />,
-        <Playlist key='3' />
-      ],
     }
 
   }
@@ -28,12 +23,18 @@ class AudioPlayer extends Component {
 
   render() {
     return (
-      <footer>
+      <footer
+        style={{ 'backgroundColor': this.props.colors.main }}>
         <div className='marquee'>
 
-          { this.state.playlist }
+          <Playlist {...this.props} key='1' />,
+          <Playlist {...this.props} key='2' />,
+          <Playlist {...this.props} key='3' />
+
 
         </div>
+
+      
       </footer>
     );
   }

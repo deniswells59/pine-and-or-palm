@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './style.css';
 
-const SPACING = 20,
+const SPACING = 14,
       ROWS = Math.max((window.innerHeight - 100) / SPACING),
       COLS = Math.max(window.innerWidth / SPACING),
       CIRCLE_PARTICLES = ROWS * COLS ,
@@ -102,7 +102,7 @@ class Home extends Component {
         let c = list[i];
         if(!c.size) c.size = 2;//random(-2, 3);
 
-        this.createNode(c, w, b);
+        this.createNode(c, w, b, this.convertHex(this.props.colors.text));
       }
 
       ctx.putImageData( a, 0, 0 );
@@ -111,16 +111,27 @@ class Home extends Component {
     requestAnimationFrame( this.step );
   }
 
-  createNode (circle, width, pixel) {
+  createNode (circle, width, pixel, color) {
     let size = circle.size;
 
     for (let i = 0; i <= size; i++) { // X - Loop
       for (let ii = 0; ii <= size; ii++) { // Y - Loop
         let center = ((~~circle.x + i) + ( (~~circle.y + ii ) * width ) ) *  4;
-        pixel[center] = 237, pixel[center+1] = 216, pixel[center+2] = 52, pixel[center+3] = 200;
+        pixel[center] = color.r, pixel[center+1] = color.g, pixel[center+2] = color.b, pixel[center+3] = 200;
       }
     }
-  };
+  }
+
+  convertHex(hex) {
+    hex = hex.replace('#','');
+
+    let r = parseInt(hex.substring(0,2), 16);
+    let g = parseInt(hex.substring(2,4), 16);
+    let b = parseInt(hex.substring(4,6), 16);
+
+    return { r, g, b };
+  }
+
 
   render() {
     return (

@@ -9,10 +9,10 @@ class Playlist extends Component {
   render() {
     return (
       <div className='playlist'>
-        <Song id='small' name='dakota' />
-        <Song name='for loko ono' />
-        <Song name='i killed jfk' />
-        <Song name='engineer song' />
+        <Song {...this.props} active='true' id='small' name='dakota' />
+        <Song {...this.props} name='for loko ono' />
+        <Song {...this.props} name='i killed jfk' />
+        <Song {...this.props} name='engineer song' />
       </div>
     );
   }
