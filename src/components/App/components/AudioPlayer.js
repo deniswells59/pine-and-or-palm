@@ -1,7 +1,6 @@
-
-
 import React, { Component } from 'react';
 import Playlist from './Playlist';
+import AudioControl from './AudioControl';
 
 class AudioPlayer extends Component {
   constructor(props) {
@@ -11,7 +10,7 @@ class AudioPlayer extends Component {
       interval: null,
       translate3d: 0,
       marquee: null,
-      playing: true,
+      playing: false,
       trackList: ['dakota', 'i_killed_jfk', 'for_loko_ono', 'engineer_song'],
       track: 'dakota'
     }
@@ -27,29 +26,25 @@ class AudioPlayer extends Component {
   }
 
   render() {
+    let icon = 'icon-pause-outline';
+
+    if(!this.state.playing) icon = 'icon-play-outline';
     return (
       <div className="audio-player">
         <div
-          className="controls"
-          style={{backgroundImage: `linear-gradient(to bottom, ${this.props.colors.main}, ${this.props.colors.accent})`}}>
-          <button
-            className='audio-control'
+          className="controls">
+          <AudioControl
+            {...this.props}
             id='prev'
-            style={{color: this.props.colors.text}}>
-            <i className="icon icon-rewind-outline"></i>
-          </button>
-          <button
-            className='audio-control'
+            icon='icon-rewind-outline' />
+          <AudioControl
+            {...this.props}
             id='pause'
-            style={{color: this.props.colors.text}}>
-            <i className="icon icon-pause-outline"></i>
-          </button>
-          <button
-            className='audio-control'
-            id='next'
-            style={{color: this.props.colors.text}}>
-              <i className="icon icon-fast-fw-outline"></i>
-          </button>
+            icon={ icon } />
+          <AudioControl
+            {...this.props}
+            id='fwd'
+            icon='icon-fast-fw-outline' />
         </div>
 
         <footer

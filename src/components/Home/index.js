@@ -132,14 +132,13 @@ class Home extends Component {
     return { r, g, b };
   }
 
-
   render() {
     return (
       <div className='home-container'>
         <div id="canvas-container"></div>
 
         <div className="album-art">
-          <h3>Freshly Cleaned Kid</h3>
+          <h3>This is album art</h3>
         </div>
       </div>
     );

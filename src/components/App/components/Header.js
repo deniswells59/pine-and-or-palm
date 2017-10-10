@@ -28,7 +28,7 @@ class Header extends Component {
         </div>
         <div className="title-wrapper">
           <img
-            className='logo' 
+            className='logo'
             src={`/assets/pandpheart_${this.props.colors.name}.png`} alt=""/>
         </div>
       </nav>
@@ -39,9 +39,9 @@ class Header extends Component {
 class Icon extends Component {
   render() {
     return (
-      <a href={this.props.link}
-         style={{ color: this.props.colors.text }}>
-         <div className="icon-border">
+      <a href={this.props.link}>
+         <div className="icon-border"
+           style={{ backgroundImage: `linear-gradient(to bottom, ${this.props.colors.main}, ${this.props.colors.accent})` }}>
            <i className={`icon ${this.props.icon}`}></i>
          </div>
       </a>

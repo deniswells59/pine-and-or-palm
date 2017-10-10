@@ -54,7 +54,7 @@ footer * {
   transform: translate3d(0, -20px, 0);
 }
 .playlist {
-  animation: marquee 60s infinite linear;
+  /*animation: marquee 60s infinite linear;*/
 }
 .inner-marquee {
   margin: 0 .5em;
@@ -106,12 +106,13 @@ footer * {
 }
 .controls {
   position: absolute;
-  right: 50px;
-  bottom: 75px;
+  right: 5px;
+  bottom: 80px;
   padding: 1em;
 }
 button.audio-control {
   background: none;
+  color: #fcfcfc;
   border: 1px solid;
   font-size: 1.2em;
   border-radius: 50%;
@@ -119,7 +120,16 @@ button.audio-control {
   width: 38px;
   text-align: center;
   margin: .5em;
+  -webkit-transition: color .2s ease-out;
+  -moz-transition: color .2s ease-out;
+  -o-transition: color .2s ease-out;
+  transition: color .2s ease-out;
 }
+button.audio-control:hover {
+  cursor: pointer;
+  color: black;
+}
+button:focus {outline:0;}
 button#pause {
   height: 42px;
   width: 42px;
