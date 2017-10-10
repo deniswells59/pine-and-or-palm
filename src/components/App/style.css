@@ -5,7 +5,7 @@ nav, footer {
 }
 nav, footer, img.logo,
 h2.song-title, .song-break, .social a,
-.controls, .controls button {
+.controls, .controls button, div.icon-border {
   -webkit-transition: all 1s ease-out;
   -moz-transition: all 1s ease-out;
   -o-transition: all 1s ease-out;
@@ -127,7 +127,6 @@ button.audio-control {
 }
 button.audio-control:hover {
   cursor: pointer;
-  color: black;
 }
 button:focus {outline:0;}
 button#pause {

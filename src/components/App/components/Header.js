@@ -41,7 +41,10 @@ class Icon extends Component {
     return (
       <a href={this.props.link}>
          <div className="icon-border"
-           style={{ backgroundImage: `linear-gradient(to bottom, ${this.props.colors.main}, ${this.props.colors.accent})` }}>
+           style={{
+             backgroundImage: `linear-gradient(to bottom, ${this.props.colors.main}, ${this.props.colors.accent})`,
+             color: this.props.colors.text
+           }}>
            <i className={`icon ${this.props.icon}`}></i>
          </div>
       </a>

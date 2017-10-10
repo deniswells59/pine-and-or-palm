@@ -15,6 +15,9 @@ class AudioPlayer extends Component {
       track: 'dakota'
     }
 
+    this.pause = this.pause.bind(this);
+    this.next = this.next.bind(this);
+    this.prev = this.prev.bind(this);
   }
 
   componentDidMount() {
@@ -23,6 +26,18 @@ class AudioPlayer extends Component {
 
   componentWillUnmount() {
 
+  }
+
+  pause() {
+    this.setState({ playing: !this.state.playing });
+  }
+
+  prev() {
+    console.log('prev!');
+  }
+
+  next() {
+    console.log('next!');
   }
 
   render() {
@@ -35,14 +50,17 @@ class AudioPlayer extends Component {
           className="controls">
           <AudioControl
             {...this.props}
+            clickHandler={ this.prev }
             id='prev'
             icon='icon-rewind-outline' />
           <AudioControl
             {...this.props}
+            clickHandler={ this.pause }
             id='pause'
             icon={ icon } />
           <AudioControl
             {...this.props}
+            clickHandler={ this.next }
             id='fwd'
             icon='icon-fast-fw-outline' />
         </div>
@@ -51,7 +69,7 @@ class AudioPlayer extends Component {
           style={{ 'backgroundColor': this.props.colors.main }}>
           <div className='marquee'>
 
-            <Playlist {...this.props} {...this.state} />,
+            <Playlist {...this.props} {...this.state} />
 
           </div>
         </footer>
