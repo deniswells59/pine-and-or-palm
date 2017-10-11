@@ -9,19 +9,17 @@ class Song extends Component {
   render() {
     let name = this.props.name.split('_').join(' '),
         active = false,
-        color = this.props.colors.text,
-        dash = <span
-                 style={{ 'color': this.props.colors.text }}
-                 className='song-break'> - </span>;
+        color = this.props.colors.text;
+        // dash =
 
 
     if(this.props.name === this.props.track) {
       color = this.props.colors.accent;
     }
 
-    if(this.props.last) {
-      dash = null;
-    }
+    // if(this.props.last) {
+    //   dash = null;
+    // }
 
     return (
       <div className='song-wrapper'>
@@ -31,7 +29,9 @@ class Song extends Component {
           className='song-title'
           data-name={ this.props.name }>
           { name }
-          { dash }
+          <span
+           style={{ 'color': this.props.colors.text }}
+           className='song-break'> - </span>
         </h2>
       </div>
     );

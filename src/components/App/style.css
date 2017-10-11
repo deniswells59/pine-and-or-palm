@@ -54,10 +54,7 @@ footer * {
   transform: translate3d(0, -20px, 0);
 }
 .playlist {
-  /*animation: marquee 60s infinite linear;*/
-}
-.inner-marquee {
-  margin: 0 .5em;
+  /*animation: maruee 60s infinite linear;*/
 }
 
 @-webkit-keyframes marquee {
