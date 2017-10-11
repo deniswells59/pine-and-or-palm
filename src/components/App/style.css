@@ -35,6 +35,13 @@ h2.song-title  {
   font-size: 6em;
   float: left;
   min-width: 400px;
+  -webkit-transition: color .2s ease-out;
+  -moz-transition: color .2s ease-out;
+  -o-transition: color .2s ease-out;
+  transition: color .2s ease-out;
+}
+h2.song-title  {
+  cursor: pointer;
 }
 h2.song-title#small {
   min-width: 300px;

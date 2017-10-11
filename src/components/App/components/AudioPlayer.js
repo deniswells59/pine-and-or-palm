@@ -21,6 +21,7 @@ class AudioPlayer extends Component {
     this.prev = this.prev.bind(this);
     this.handleSpacebar = this.handleSpacebar.bind(this);
     this.reload = this.reload.bind(this);
+    this.changeSong = this.changeSong.bind(this);
   }
 
   componentDidMount() {
@@ -81,6 +82,11 @@ class AudioPlayer extends Component {
     this.setState({ playing: true });
   }
 
+  changeSong(e) {
+    let track = e.target.getAttribute('data-name');
+    this.setState({ track }, this.reload);
+  }
+
   render() {
     let icon = 'icon-pause-outline';
 
@@ -116,8 +122,11 @@ class AudioPlayer extends Component {
 
           <div className='marquee'>
 
-            <Playlist {...this.props} {...this.state} />
-            
+            <Playlist
+              clickHandler={this.changeSong}
+              {...this.props}
+              {...this.state} />
+
           </div>
 
         </footer>
