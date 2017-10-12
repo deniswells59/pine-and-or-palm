@@ -22,3 +22,4 @@ yarn-error.log*
 node_modules
 
 /public/assets/*.m4a
+/public/assets/gallery/

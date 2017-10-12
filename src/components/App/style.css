@@ -11,6 +11,12 @@ h2.song-title, .song-break, .social a,
   -o-transition: all 1s ease-out;
   transition: all 1s ease-out;
 }
+.container {
+  height: 100%;
+  background-image: url('/assets/tree.png');
+  background-position: 50% 50%;
+  background-size: cover;
+}
 img.logo {
   width: auto;
   height: 60px;
@@ -136,4 +142,25 @@ button:focus {outline:0;}
 button#pause {
   height: 42px;
   width: 42px;
+}
+.nav-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  margin: 0em 2em;
+}
+a.link {
+  margin: 0 1em;
+  text-decoration: none;
+  font-family: 'Amatic SC', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.8em;
+}
+a#merch_button {
+  background-color: orange;
+  padding: .2em 1em;
+  border-radius: 50%;
+  border: 1px solid;
+  margin: 0 .5em;
 }

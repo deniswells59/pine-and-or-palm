@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Nav from './Nav';
 
 class Header extends Component {
   render() {
@@ -31,6 +32,9 @@ class Header extends Component {
             className='logo'
             src={`/assets/pandpheart_${this.props.colors.name}.png`} alt=""/>
         </div>
+
+        <Nav {...this.props}/>
+
       </nav>
     );
   }
