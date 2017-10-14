@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NavAnimation from '../NavAnimation';
 // import './style.css';
 
 class Photos extends Component {
@@ -34,4 +35,4 @@ class Photos extends Component {
   }
 }
 
-export default Photos;
+export default NavAnimation(Photos);

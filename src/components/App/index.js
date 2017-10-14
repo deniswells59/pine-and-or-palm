@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
+import TransitionGroup from "react-transition-group/TransitionGroup";
+
+const firstChild = props => {
+  const childrenArray = React.Children.toArray(props.children);
+  return childrenArray[0] || null;
+};
 
 import Home from '../Home';
 import Photos from '../Photos';
@@ -27,7 +33,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.state.interval = setInterval(this.changeColor, 20000);
+    this.state.interval = setInterval(this.changeColor, 5000);
   }
 
   changeColor() {
@@ -50,11 +56,22 @@ class App extends Component {
 
             <div className="body-wrapper">
 
-              <Route exact path="/" render={() => {
-                  return <Home {...this.state} />
-                }} />
+              <Route
+                exact
+                path="/"
+                children={({ match, ...rest }) => (
+                  <TransitionGroup component={firstChild}>
+                    {match && <Home {...this.state} {...rest} />}
+                  </TransitionGroup>
+              )}/>
 
-              <Route path='/photos' component={ Photos } />
+              <Route
+                path='/photos'
+                children={ ({ match, ...rest }) => (
+                  <TransitionGroup component={firstChild}>
+                    {match && <Photos {...rest} />}
+                  </TransitionGroup>
+              )} />
 
             </div>
 

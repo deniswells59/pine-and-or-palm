@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import NavAnimation from '../NavAnimation';
+
 import './style.css';
 
-const SPACING = 14,
+const SPACING = 16,
       ROWS = Math.max((window.innerHeight - 100) / SPACING),
       COLS = Math.max(window.innerWidth / SPACING),
       CIRCLE_PARTICLES = ROWS * COLS ,
@@ -39,8 +41,8 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    this.init();
-    this.step();
+    // this.init();
+    // this.step();
   }
 
   init() {
@@ -135,7 +137,7 @@ class Home extends Component {
   render() {
     return (
       <div className='home-container'>
-        <div id="canvas-container"></div>
+
 
         <div className="album-art">
           <h3>This is album art</h3>
@@ -145,4 +147,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default NavAnimation(Home);

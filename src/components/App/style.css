@@ -2,6 +2,8 @@ nav, footer {
   width: 100%;
   padding: 5px 0;
   background-color: #f24d16;
+  position: relative;
+  z-index: 100;
 }
 nav, footer, img.logo,
 h2.song-title, .song-break, .social a,
@@ -23,6 +25,14 @@ img.logo {
 }
 .body-wrapper {
   height: 85vh;
+  z-index: 0;
+  position: relative;
+}
+.body-wrapper .animated-page-wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
 }
 .title-wrapper {
   text-align: center;

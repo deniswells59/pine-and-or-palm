@@ -10,6 +10,7 @@ let config = {
   entry: {
     main: [
       'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
+      'babel-polyfill',
       APP_DIR
     ],
   },
@@ -33,7 +34,10 @@ let config = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
-  ]
+  ],
+  devServer: {
+    hot: true
+  }
 };
 
 module.exports = config;
