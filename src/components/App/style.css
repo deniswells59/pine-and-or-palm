@@ -7,11 +7,12 @@ nav, footer {
 }
 nav, footer, img.logo,
 h2.song-title, .song-break, .social a,
-.controls, .controls button, div.icon-border {
-  -webkit-transition: all 1s ease-out;
-  -moz-transition: all 1s ease-out;
-  -o-transition: all 1s ease-out;
-  transition: all 1s ease-out;
+.controls, .controls button, div.icon-border,
+a.link, .photo-container {
+  -webkit-transition: all 1.2s ease-out;
+  -moz-transition: all 1.2s ease-out;
+  -o-transition: all 1.2s ease-out;
+  transition: all 1.2s ease-out;
 }
 .container {
   height: 100%;
@@ -155,22 +156,17 @@ button#pause {
 }
 .nav-wrapper {
   position: absolute;
-  top: 20px;
-  right: 0;
+  top: 268px;
+  right: -210px;
   margin: 0em 2em;
+  transform: rotate(-90deg);
 }
 a.link {
-  margin: 0 1em;
+  background-color: black;
+  padding: 1em;
   text-decoration: none;
-  font-family: 'Amatic SC', sans-serif;
+  font-family: 'Rubik Mono One', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 1.8em;
-}
-a#merch_button {
-  background-color: orange;
-  padding: .2em 1em;
-  border-radius: 50%;
-  border: 1px solid;
-  margin: 0 .5em;
+  letter-spacing: 0px;
+  font-size: 1.4em;
 }

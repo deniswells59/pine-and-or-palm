@@ -12,13 +12,13 @@ extends Component {
   }
 
   componentWillAppear(cb) {
-    Animated.spring(this.state.animate, { toValue: 0, duration: 1000 }).start();
+    Animated.timing(this.state.animate, { toValue: 0, duration: 1000 }).start();
     cb();
   }
 
   componentWillEnter(cb) {
     setTimeout(
-      () => Animated.spring(this.state.animate, { toValue: 0, duration: 1000 }).start(),
+      () => Animated.timing(this.state.animate, { toValue: 0, duration: 1000 }).start(),
       250
     );
 
@@ -26,8 +26,8 @@ extends Component {
   }
 
   componentWillLeave(cb) {
-    Animated.spring(this.state.animate, { toValue: -1, duration: 1000 }).start();
-    setTimeout(() => cb(), 175);
+    Animated.timing(this.state.animate, { toValue: -1, duration: 1000 }).start();
+    setTimeout(() => cb(), 1000);
   }
 
   render() {

@@ -8,24 +8,34 @@ class Nav extends Component {
   }
 
   render() {
+
     return (
       <div className='nav-wrapper'>
         <Link
+            id='home'
             className='link'
             to='/'
-            style={{ color: this.props.colors.accent }}>Home</Link>
+            style={{
+              color: this.props.colors.accent,
+              backgroundColor: this.props.colors.text,
+            }}>Home</Link>
         <Link
+            id='photos'
             className='link'
             to='/photos'
-            style={{ color: this.props.colors.accent }}>Photos</Link>
-          <a
-            href='/'
-            className='link'
-            id='merch_button'
             style={{
-              color: this.props.colors.text,
-              backgroundImage: `linear-gradient(to bottom, ${this.props.colors.main}, ${this.props.colors.accent})`,
-            }}>Merch</a>
+              color: this.props.colors.accent,
+              backgroundColor: this.props.colors.text,
+            }}>Photos</Link>
+        <Link
+            id='merch'
+            className='link'
+            to='/photos'
+            style={{
+              color: this.props.colors.accent,
+              backgroundColor: this.props.colors.text,
+            }}>Merch</Link>
+
       </div>
     );
   }

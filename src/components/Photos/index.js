@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NavAnimation from '../NavAnimation';
-// import './style.css';
+
+import './style.css';
 
 class Photos extends Component {
   constructor(props) {
@@ -21,7 +22,10 @@ class Photos extends Component {
     }
 
     return (
-      <div className='photo-container'>
+      <div
+        className='photo-container'
+        style={{ backgroundColor: this.props.colors.text }}
+        >
         <div className="gallery-row">
 
           <img

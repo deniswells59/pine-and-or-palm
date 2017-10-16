@@ -10,6 +10,7 @@ const firstChild = props => {
 
 import Home from '../Home';
 import Photos from '../Photos';
+
 import Header from './components/Header.js';
 import AudioPlayer from './components/AudioPlayer.js';
 
@@ -33,7 +34,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.state.interval = setInterval(this.changeColor, 5000);
+    this.state.interval = setInterval(this.changeColor, 15000);
   }
 
   changeColor() {
@@ -69,7 +70,7 @@ class App extends Component {
                 path='/photos'
                 children={ ({ match, ...rest }) => (
                   <TransitionGroup component={firstChild}>
-                    {match && <Photos {...rest} />}
+                    {match && <Photos {...this.state} {...rest} />}
                   </TransitionGroup>
               )} />
 
