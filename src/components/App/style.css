@@ -2,7 +2,7 @@ nav, footer {
   width: 100%;
   padding: 5px 0;
   background-color: #f24d16;
-  position: relative;
+  position: fixed;
   z-index: 100;
 }
 nav, footer, img.logo,
@@ -15,7 +15,7 @@ a.link, .photo-container {
   transition: all 1.2s ease-out;
 }
 .container {
-  height: 100%;
+  min-height: 100vh;
   background-image: url('/assets/tree.png');
   background-position: 50% 50%;
   background-size: cover;
@@ -25,9 +25,12 @@ img.logo {
   height: 60px;
 }
 .body-wrapper {
-  height: 85vh;
+  height: 100%;
   z-index: 0;
   position: relative;
+  width: 100%;
+  display: inline-block;
+  margin-top: 74px;
 }
 .body-wrapper .animated-page-wrapper {
   position: absolute;
@@ -65,7 +68,6 @@ h2.song-title#small {
 }
 footer {
   padding: 0;
-  position: absolute;
   bottom: 0;
   overflow: hidden;
   max-height: 85px;
@@ -126,7 +128,7 @@ footer * {
   max-height: 100px;
 }
 .controls {
-  position: absolute;
+  position: fixed;
   right: 5px;
   bottom: 80px;
   padding: 1em;

@@ -8,8 +8,18 @@ class Photos extends Component {
     super(props);
 
     this.state = {
-      trip: false
+      trip: false,
+      images: []
     }
+  }
+
+  componentDidMount() {
+    this.getImages();
+  }
+
+  getImages() {
+    //SOME API CALL
+    this.setState({ images: ['chey.jpg', 'chey.jpg', 'chey.jpg'] });
   }
 
   render() {
@@ -26,14 +36,16 @@ class Photos extends Component {
         className='photo-container'
         style={{ backgroundColor: this.props.colors.text }}
         >
+
         <div className="gallery-row">
-
-          <img
-            height='auto'
-            width='200px'
-            src={ `${prev}chey.jpg` } alt=""/>
-
+          { this.state.images.map((i, idx) => {
+            return <img
+                    key={idx}
+                    className='gallery-img'
+                    src={ `${full}${i}` } alt=""/>
+          })}
         </div>
+
       </div>
     );
   }
