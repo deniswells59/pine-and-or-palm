@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.state.interval = setInterval(this.changeColor, 15000);
+    this.state.interval = setInterval(this.changeColor, 20000);
   }
 
   changeColor() {
@@ -62,7 +62,10 @@ class App extends Component {
                 path="/"
                 children={({ match, ...rest }) => (
                   <TransitionGroup component={firstChild}>
-                    {match && <Home {...this.state} {...rest} />}
+                    {match && <Home
+                                {...this.state}
+                                {...this.props}
+                                {...rest} />}
                   </TransitionGroup>
               )}/>
 
@@ -70,7 +73,10 @@ class App extends Component {
                 path='/photos'
                 children={ ({ match, ...rest }) => (
                   <TransitionGroup component={firstChild}>
-                    {match && <Photos {...this.state} {...rest} />}
+                    {match && <Photos
+                                {...this.state}
+                                {...this.props}
+                                {...rest} />}
                   </TransitionGroup>
               )} />
 

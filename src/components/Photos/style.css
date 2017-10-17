@@ -15,4 +15,111 @@
   width: 100%;
   height: auto;
   padding: 40px 0;
+  -webkit-transition: color 1s ease-out;
+  -moz-transition: color 1s ease-out;
+  -o-transition: color 1s ease-out;
+  transition: color 1s ease-out;
+}
+
+button.trip-button {
+  opacity: 1;
+  position: fixed;
+  top: 2em;
+  left: 1em;
+  border: none;
+  color: #fff;
+  font-family: 'Liquido';
+  font-size: 3em;
+  padding: .4em;
+  -webkit-animation: appear 1s ease-in;
+  -moz-animation:    appear 1s ease-in;
+  -o-animation:      appear 1s ease-in;
+  animation:         appear 1s ease-in;
+  -webkit-transition: color 1s ease-out;
+  -moz-transition: color 1s ease-out;
+  -o-transition: color 1s ease-out;
+  transition: color 1s ease-out;
+}
+
+button.trip-button:hover {
+  /*-webkit-animation: trip 5s infinite;
+  -moz-animation:    trip 5s infinite;
+  -o-animation:      trip 5s infinite;
+  animation:         trip 5s infinite;*/
+  cursor: pointer;
+  color: rgb(242, 48, 159);
+}
+
+button.hide {
+  opacity: 0;
+}
+
+@-webkit-keyframes appear {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes appear {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes appear {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes appear {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@-webkit-keyframes trip {
+  0%   { color: #ff0000; }
+  10%  { color: #ff2e00; }
+  20%  { color: #ffb000; }
+  30%  { color: #8fff00; }
+  40%  { color: #24ff00; }
+  50%  { color: #00ffa3; }
+  60%  { color: #0094ff; }
+  70%  { color: #3b00ff; }
+  80%  { color: #d400ff; }
+  90%  { color: #ff006b; }
+  100% { color: #ff0000; }
+}
+@-moz-keyframes trip {
+  0%   { color: #ff0000; }
+  10%  { color: #ff2e00; }
+  20%  { color: #ffb000; }
+  30%  { color: #8fff00; }
+  40%  { color: #24ff00; }
+  50%  { color: #00ffa3; }
+  60%  { color: #0094ff; }
+  70%  { color: #3b00ff; }
+  80%  { color: #d400ff; }
+  90%  { color: #ff006b; }
+  100% { color: #ff0000; }
+}
+@-o-keyframes trip {
+  0%   { color: #ff0000; }
+  10%  { color: #ff2e00; }
+  20%  { color: #ffb000; }
+  30%  { color: #8fff00; }
+  40%  { color: #24ff00; }
+  50%  { color: #00ffa3; }
+  60%  { color: #0094ff; }
+  70%  { color: #3b00ff; }
+  80%  { color: #d400ff; }
+  90%  { color: #ff006b; }
+  100% { color: #ff0000; }
+}
+@keyframes trip {
+  0%   { color: #ff0000; }
+  10%  { color: #ff2e00; }
+  20%  { color: #ffb000; }
+  30%  { color: #8fff00; }
+  40%  { color: #24ff00; }
+  50%  { color: #00ffa3; }
+  60%  { color: #0094ff; }
+  70%  { color: #3b00ff; }
+  80%  { color: #d400ff; }
+  90%  { color: #ff006b; }
+  100% { color: #ff0000; }
 }

@@ -39,9 +39,11 @@ class AudioPlayer extends Component {
   }
 
   handleSpacebar(e) {
-    e.preventDefault();
-    if(e.keyCode === 32) {
+    if(e.keyCode === 32 && e.target === document.body) {
+      e.preventDefault();
       this.pause();
+      
+      return false;
     }
   }
 

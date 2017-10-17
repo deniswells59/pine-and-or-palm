@@ -14,6 +14,12 @@ a.link, .photo-container {
   -o-transition: all 1.2s ease-out;
   transition: all 1.2s ease-out;
 }
+.social a div, .social a div:hover {
+  -webkit-transition: color 1.2s ease-out;
+  -moz-transition: color 1.2s ease-out;
+  -o-transition: color 1.2s ease-out;
+  transition: color 1.2s ease-out;
+}
 .container {
   min-height: 100vh;
   background-image: url('/assets/tree.png');
@@ -52,7 +58,7 @@ h1.nav-title, h2.song-title {
   margin: 0 .5em;
 }
 h2.song-title  {
-  font-size: 6em;
+  font-size: 6.5em;
   float: left;
   min-width: 400px;
   -webkit-transition: color .2s ease-out;
@@ -77,7 +83,7 @@ footer * {
 }
 .marquee {
   width: 200%;
-  transform: translate3d(0, -20px, 0);
+  transform: translate3d(0, -7px, 0);
 }
 .playlist {
   /*animation: maruee 60s infinite linear;*/

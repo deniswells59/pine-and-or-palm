@@ -41,8 +41,8 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    // this.init();
-    // this.step();
+    this.init();
+    this.step();
   }
 
   init() {
@@ -104,7 +104,7 @@ class Home extends Component {
         let c = list[i];
         if(!c.size) c.size = 2;//random(-2, 3);
 
-        this.createNode(c, w, b, this.convertHex(this.props.colors.text));
+        this.createNode(c, w, b, this.props.convertHex(this.props.colors.text));
       }
 
       ctx.putImageData( a, 0, 0 );
@@ -124,20 +124,13 @@ class Home extends Component {
     }
   }
 
-  convertHex(hex) {
-    hex = hex.replace('#','');
-
-    let r = parseInt(hex.substring(0,2), 16);
-    let g = parseInt(hex.substring(2,4), 16);
-    let b = parseInt(hex.substring(4,6), 16);
-
-    return { r, g, b };
-  }
-
   render() {
     return (
       <div className='home-container'>
-
+        <div
+          id="canvas-container"
+          className="canvas-container"
+          ></div>
 
         <div className="album-art">
           <h3>This is album art</h3>
