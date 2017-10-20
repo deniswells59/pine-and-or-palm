@@ -1,20 +1,27 @@
 require('react-hot-loader/patch');
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { convertHex, transition } from './common';
-import { AppContainer } from 'react-hot-loader'
+import { Provider } from 'react-redux';
+import { AppContainer } from 'react-hot-loader';
 
+import configureStore from './store/configureStore';
+
+import { convertHex, transition } from './common';
 import App from './components/App';
 
 import './style.css';
 
+const store = configureStore();
+
 const render = Component => {
   ReactDOM.render(
-    <AppContainer>
-      <Component
-        transition={ transition }
-        convertHex={ convertHex } />
-    </AppContainer>,
+    <Provider store={store}>
+      <AppContainer>
+        <Component
+          transition={ transition }
+          convertHex={ convertHex } />
+      </AppContainer>
+    </Provider>,
     document.getElementById('root')
   )
 };

@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Home from '../Home';
 import Photos from '../Photos';
 import TripButton from '../Photos/components/TripButton';
-import Merch from '../Merch';
+import Merch from '../../containers/MerchList';
 
 import Header from './components/Header.js';
 import RouteContainer from './components/RouteContainer.js';

@@ -31,6 +31,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 
+app.use('/api/', (req, res) => {
+  res.send({ merch: [
+    {
+      "id": 0,
+      "name": 'Tie-Dyed T-Shirt',
+      "img": 'tyedyed',
+      "price": '25.50',
+      "sizes": {
+        "S": 10,
+        "M": 10,
+        "L": 5,
+        "XL": 5,
+        "XXL": 3,
+      }
+    }
+  ]})
+});
 app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'))
 });
