@@ -1,0 +1,7 @@
+.merch-container {
+  padding-bottom: 8em;
+  position: relative;
+  display: inline-block;
+  width: 100vw;
+  overflow: hidden;
+}

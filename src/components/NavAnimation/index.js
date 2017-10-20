@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import * as Animated from "animated/lib/targets/react-dom";
 
 const NavAnimation = WrappedComponent => class NavAnimation
-extends Component {
+ extends Component {
   constructor(props) {
     super(props);
 
@@ -12,11 +12,12 @@ extends Component {
   }
 
   componentWillAppear(cb) {
-    Animated.timing(this.state.animate, { toValue: 0, duration: 1000 }).start();
+    Animated.timing(this.state.animate, { toValue: 0, duration: 0 }).start();
     cb();
   }
 
   componentWillEnter(cb) {
+    window.scrollTo(0, 0);
     setTimeout(
       () => Animated.timing(this.state.animate, { toValue: 0, duration: 1000 }).start(),
       250
@@ -31,11 +32,15 @@ extends Component {
   }
 
   render() {
+    let width = window.innerWidth;
+
     const style = {
-      left: Animated.template`${this.state.animate.interpolate({
+      transform: Animated.template`
+      translateX(${this.state.animate.interpolate({
       inputRange: [-1, 1],
-      outputRange: ["-100%", "100%"]
-      })}`
+      outputRange: [`-${width}px`, `${width}px`]
+     })})
+     `
     };
 
     return (

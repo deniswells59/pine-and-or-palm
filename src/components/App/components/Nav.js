@@ -30,7 +30,7 @@ class Nav extends Component {
         <Link
             id='merch'
             className='link'
-            to='/photos'
+            to='/merch'
             style={{
               color: this.props.colors.accent,
               backgroundColor: this.props.colors.text,

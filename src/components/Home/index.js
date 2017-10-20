@@ -41,6 +41,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    this.props.routeChange(this.props.location);
     this.init();
     this.step();
   }
@@ -104,7 +105,7 @@ class Home extends Component {
         let c = list[i];
         if(!c.size) c.size = 2;//random(-2, 3);
 
-        this.createNode(c, w, b, this.props.convertHex(this.props.colors.text));
+        this.createNode(c, w, b, this.props.convertHex(this.props.colors.accent));
       }
 
       ctx.putImageData( a, 0, 0 );
