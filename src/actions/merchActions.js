@@ -1,19 +1,23 @@
 import * as types from './actionTypes';
+import axios from 'axios';
 
 function url(route) {
   return `/api${route ? route : ''}`;
 }
 
-export function receiveMerch(json) {
-  return { type: types.RECEIVE_MERCH, merch: json.merch };
+export function receiveMerch(data) {
+  return { type: types.RECEIVE_MERCH, merch: data };
 }
 
 export function fetchMerch() {
   return dispatch => {
-    return fetch(url(), {
-      method: 'GET'
-    })
-    .then(response => response.json())
-    .then(json => dispatch(receiveMerch(json)));
+    axios.get(url('/merch'))
+      .then(response => {
+        console.log(response);
+        dispatch(receiveMerch(response.data))
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 }

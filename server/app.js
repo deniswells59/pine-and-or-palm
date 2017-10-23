@@ -1,16 +1,21 @@
+require('dotenv').config();
+
 import fs from 'fs';
-import express from 'express';
+import express, { Router } from 'express';
 import http from 'http';
+import https from 'https';
 import path from 'path';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
+import MerchController from './controllers/merch';
 
-var webpack = require('webpack');
-var webpackConfig = require('../webpack.config');
-var compiler = webpack(webpackConfig);
+const webpack = require('webpack');
+const webpackConfig = require('../webpack.config');
+const compiler = webpack(webpackConfig);
 
 const app = express();
-const port = process.env.PORT || 3000;
+const apiRouter = express.Router();
+const PORT = process.env.NODE_ENV === 'prod' ? 80 : 3000;
 const server = http.createServer(app);
 
 const routes = [
@@ -31,27 +36,26 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/api/', (req, res) => {
-  res.send({ merch: [
-    {
-      "id": 0,
-      "name": 'Tie-Dyed T-Shirt',
-      "img": 'tyedyed',
-      "price": '25.50',
-      "sizes": {
-        "S": 10,
-        "M": 10,
-        "L": 5,
-        "XL": 5,
-        "XXL": 3,
-      }
-    }
-  ]})
-});
+app.use('/api', apiRouter);
+
+const mc = new MerchController(apiRouter);
+
 app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'))
 });
+//
+// if(process.env.NODE_ENV === 'prod') {
+//   const options = {
+//     key  : fs.readFileSync(path.join(__dirname, '..', 'pineandorpalm.com.key')),
+//     cert : fs.readFileSync(path.join(__dirname, '..', 'pineandorpalm.com.csr'))
+//   };
+//
+//   https.createServer(options, app).listen(PORT, function () {
+//     console.log('Started!');
+//   });
+// }
 
-server.listen(port, err => {
-  console.log(err || `Listening on port ${port}`);
+
+server.listen(PORT, err => {
+  console.log(err || `Listening on port ${PORT}`);
 });
