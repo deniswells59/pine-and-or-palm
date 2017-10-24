@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router'
 import { TransitionGroup } from 'react-transition-group';
 
 const firstChild = props => {

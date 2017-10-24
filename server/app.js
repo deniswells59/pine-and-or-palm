@@ -43,17 +43,17 @@ const mc = new MerchController(apiRouter);
 app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'))
 });
-//
-// if(process.env.NODE_ENV === 'prod') {
-//   const options = {
-//     key  : fs.readFileSync(path.join(__dirname, '..', 'pineandorpalm.com.key')),
-//     cert : fs.readFileSync(path.join(__dirname, '..', 'pineandorpalm.com.csr'))
-//   };
-//
-//   https.createServer(options, app).listen(PORT, function () {
-//     console.log('Started!');
-//   });
-// }
+
+if(process.env.NODE_ENV === 'prod') {
+  const options = {
+    key  : fs.readFileSync(path.join(__dirname, '..', 'pineandorpalm.com.key')),
+    cert : fs.readFileSync(path.join(__dirname, '..', 'pineandorpalm_com.crt'))
+  };
+
+  https.createServer(options, app).listen(443, function () {
+    console.log('Started!');
+  });
+}
 
 
 server.listen(PORT, err => {

@@ -1,0 +1,46 @@
+.merch-container {
+  padding-bottom: 8em;
+  position: relative;
+  display: inline-block;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.merch-item {
+  margin: 1em 0 5em;
+}
+
+.merch-img {
+  width: 500px;
+}
+
+.merch-info * {
+  display: inline-block;
+  width: 50%;
+}
+
+.merch-info {
+  width: 500px;
+  font-family: 'Rubik Mono One', sans-serif;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+}
+
+.merch-info h3 {
+  text-align: left;
+}
+.merch-info p {
+  float: right;
+  text-align: right;
+}
+
+button.view-button {
+  width: 500px;
+  border-radius: 0px;
+  border: 5px solid;
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 1.2em;
+  padding: .2em 0;
+}

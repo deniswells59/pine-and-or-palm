@@ -5,7 +5,8 @@ import { BrowserRouter } from 'react-router-dom';
 import Home from '../Home';
 import Photos from '../Photos';
 import TripButton from '../Photos/components/TripButton';
-import Merch from '../../containers/MerchList';
+import MerchList from '../../containers/MerchList';
+import MerchItem from '../../containers/MerchItem';
 
 import Header from './components/Header.js';
 import RouteContainer from './components/RouteContainer.js';
@@ -61,7 +62,7 @@ class App extends Component {
   }
 
   render() {
-    let tripButton = <div></div> ;
+    let tripButton = <div></div>;
 
 
     if(this.state.photos) {
@@ -107,15 +108,30 @@ class App extends Component {
                                   {...this.state}
                                   {...this.props}
                                   {...rest} />}
-                    </ RouteContainer>
+                    </RouteContainer>
                   </div>
               )} />
 
               <Route
                 path='/merch'
                 children={ ({ match, ...rest }) => (
+                  <div>
+                    <RouteContainer>
+                      {match && <MerchList
+                                  routeChange={ this.routeChange }
+                                  {...this.state}
+                                  {...this.props}
+                                  {...rest} />}
+                    </RouteContainer>
+                  </div>
+              )} />
+
+              <Route
+                path='/merch-item/:id'
+                children={ ({ match, ...rest }) => (
                   <RouteContainer>
-                    {match && <Merch
+                    {match && <MerchItem
+                                match={ match }
                                 routeChange={ this.routeChange }
                                 {...this.state}
                                 {...this.props}
