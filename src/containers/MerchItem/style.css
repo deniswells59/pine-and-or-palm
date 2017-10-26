@@ -1,7 +1,64 @@
-.merch-container {
-  padding-bottom: 8em;
+.item-container {
   position: relative;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.item-col {
   display: inline-block;
-  width: 100vw;
-  overflow: hidden;
+  width: 50%;
+  font-family: 'Rubik Mono One', sans-serif;
+}
+
+.item-col p {
+  font-family: 'Lato';
+}
+
+.item-img-wrapper {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.item-img-wrapper img {
+  width: 100%;
+}
+
+.item-col.item-text {
+  position: absolute;
+  margin-top: 4em;
+}
+
+input#quantity {
+  padding: 1em;
+  width: 1em;
+  border: 2px solid;
+  font-family: '';
+}
+
+.item-attr {
+  margin-top: 8em;
+}
+
+.item-input-wrapper {
+  display: inline-block;
+  width: 25%;
+}
+
+.item-input-wrapper label {
+  margin-bottom: 1em;
+}
+
+.item-input-wrapper * {
+  display: block;
+}
+
+select.customInput {
+  width: 7em;
+  border: 2px solid;
+  border-radius: 0px;
+  padding: 1em;
+  -webkit-appearance: none;
+  text-align: center;
 }
