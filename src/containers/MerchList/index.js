@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import { receiveMerch, fetchMerch } from '../../actions/merchActions';
 
 import NavAnimation from '../../components/NavAnimation';
+import Loader from '../../components/Loader';
 
 import './style.css';
 
@@ -41,7 +42,7 @@ class MerchList extends Component {
               <div className="merch-opts">
                 <Link to={`/merch-item/${m.id}`}>
                   <button
-                    className='view-button'
+                    className='merch-button'
                     style={{
                       color: this.props.colors.accent,
                       borderColor: this.props.colors.accent,
@@ -68,9 +69,7 @@ class MerchList extends Component {
           {this.props.merch.length > 0 ?
             this.renderData()
             :
-            <div className="">
-              No Data
-            </div>
+            <Loader {...this.props} />
           }
         </div>
       </div>

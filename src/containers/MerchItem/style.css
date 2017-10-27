@@ -1,8 +1,16 @@
+.item-container-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100vw;
+  overflow: hidden;
+}
+
 .item-container {
   position: relative;
   max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
+  height: 85vh;
+  min-height: 500px;
+  margin: 2em auto;
 }
 
 .item-col {
@@ -35,6 +43,8 @@ input#quantity {
   width: 1em;
   border: 2px solid;
   font-family: '';
+  /*margin-left: auto;
+  margin-right: auto;*/
 }
 
 .item-attr {
@@ -43,7 +53,8 @@ input#quantity {
 
 .item-input-wrapper {
   display: inline-block;
-  width: 25%;
+  width: 33%;
+  /*text-align: center;*/
 }
 
 .item-input-wrapper label {
@@ -61,4 +72,10 @@ select.customInput {
   padding: 1em;
   -webkit-appearance: none;
   text-align: center;
+  /*margin-left: auto;
+  margin-right: auto;*/
+}
+
+button#add-to-cart {
+  margin: 2em 0;
 }

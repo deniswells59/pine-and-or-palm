@@ -6,14 +6,15 @@ class CustomInput extends Component {
   }
 
   renderOptions() {
-    return this.props.options.map(o => {
-      return <option value={o}>{o}</option>
+    return this.props.options.map((o, i) => {
+      return <option key={i} value={o}>{o}</option>
     });
   }
 
   render() {
     return (
-      <div className="customInput-wrapper">
+      <div
+        className="customInput-wrapper">
         <label
           htmlFor="{ `customItem-${this.props.name}` }">
           { this.props.name }

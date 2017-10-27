@@ -7,6 +7,7 @@ import { fetchOne, receiveOne } from '../../actions/merchActions';
 import NavAnimation from '../../components/NavAnimation';
 import ItemInput from '../../components/ItemInput';
 import CustomInput from '../../components/CustomInput';
+import Loader from '../../components/Loader';
 
 import './style.css';
 
@@ -65,28 +66,32 @@ class MerchItem extends Component {
       let attr = attributes[i];
 
       // Make a lib prop of not already created
-      // Set it up with an array
+      // Set it up with an options array and a key
       // i.e. attributes = [{ id: 12, name: 'size', value: 'small '}];
       if(!lib[attr.name]) {
-        lib[attr.name] = [];
+        lib[attr.name] = {};
+        lib[attr.name].options = [];
+        lib[attr.name].key = i;
       }
 
       // Push all possible options into the lib
       // i.e. lib = {
-      //  size: ['small', 'medium', 'large'];
+      //  size: { options: ['small', 'medium', 'large'], id: 1 }
       // }
-      if(lib[attr.name].indexOf(attr.option) < 0) {
-        lib[attr.name].push(attr.option);
+      if(lib[attr.name].options.indexOf(attr.option) < 0) {
+        lib[attr.name].options.push(attr.option);
       }
     }
 
     for(let attr in lib) {
       if (lib.hasOwnProperty(attr)) {
-        inputsToReturn.push(<div className="item-input-wrapper">
+        inputsToReturn.push(<div
+                              key={lib[attr].key}
+                              className="item-input-wrapper">
                                 <CustomInput
                                     {...this.props}
                                     name={attr}
-                                    options={lib[attr]} /></div>);
+                                    options={lib[attr].options}/></div>);
       }
     }
 
@@ -96,6 +101,7 @@ class MerchItem extends Component {
   renderItem() {
     let item = this.props.item;
     console.log(item);
+
     return (
       <div className="item-container">
 
@@ -132,6 +138,16 @@ class MerchItem extends Component {
             { this.renderCustomAttr() }
 
           </div>
+
+          <button
+            className='merch-button'
+            id="add-to-cart"
+            style={{
+              color: this.props.colors.accent,
+              borderColor: this.props.colors.accent,
+              backgroundColor: this.props.colors.main
+            }}
+            >Add To Cart</button>
         </div>
 
       </div>
@@ -141,15 +157,13 @@ class MerchItem extends Component {
   render() {
     return (
       <div
-        className='merch-container route-container'
+        className='item-container-wrapper route-container'
         style={{ backgroundColor: this.props.colors.text }}
         >
         { this.props.item.id ?
           this.renderItem()
           :
-          <div>
-            No Data
-          </div>
+          <Loader {...this.props} />
         }
 
       </div>
