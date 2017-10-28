@@ -7,7 +7,10 @@ import https from 'https';
 import path from 'path';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+
 import MerchController from './controllers/merch';
+import CartController from './controllers/cart';
 
 const webpack = require('webpack');
 const webpackConfig = require('../webpack.config');
@@ -21,6 +24,15 @@ const server = http.createServer(app);
 const routes = [
   '/',
 ];
+
+const MONGOURL = process.env.MONGODB_URI || 'mongodb://localhost/pineandorpalm';
+mongoose.Promise = Promise;
+mongoose.connect(MONGOURL, {
+  useMongoClient: true
+})
+  .then(() => {
+    console.log(`Mongo connected!`);
+  })
 
 app.use(require("webpack-dev-middleware")(compiler, {
   noInfo: true, publicPath: webpackConfig.output.publicPath
@@ -39,6 +51,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/api', apiRouter);
 
 const mc = new MerchController(apiRouter);
+const cc = new CartController(apiRouter);
 
 app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'))

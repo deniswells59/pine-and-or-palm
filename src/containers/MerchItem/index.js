@@ -16,15 +16,22 @@ class MerchItem extends Component {
     super(props);
 
     this.state = {
-      quantity: 1
+      quantity: 1,
+      customAttrs: []
     }
 
     this.handleInput = this.handleInput.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentWillMount() {
     this.props.merchActions.fetchOne(this.props.match.params.id); // Get Item
     this.props.routeChange(this.props.location);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.renderCustomAttr(nextProps);
   }
 
   handleInput(e) {
@@ -47,10 +54,10 @@ class MerchItem extends Component {
     this.setState({ quantity: value });
   }
 
-  renderCustomAttr() {
+  renderCustomAttr(props) {
     let inputsToReturn = [];
 
-    let item       = this.props.item;
+    let item = props.item
     let attributes = []; // Store attr
     let lib        = {}; // Sorted attr + options
 
@@ -85,17 +92,37 @@ class MerchItem extends Component {
 
     for(let attr in lib) {
       if (lib.hasOwnProperty(attr)) {
-        inputsToReturn.push(<div
-                              key={lib[attr].key}
-                              className="item-input-wrapper">
-                                <CustomInput
-                                    {...this.props}
-                                    name={attr}
-                                    options={lib[attr].options}/></div>);
+
+        if(!this.state[attr]) {
+          this.setState({ [attr]: lib[attr].options[0] });
+        }
+
+        inputsToReturn.push(<CustomInput
+                                {...props}
+                                key={lib[attr].key}
+                                selected={ this.state[attr] }
+                                name={attr}
+                                handleChange={ this.handleChange }
+                                options={lib[attr].options} />);
       }
     }
 
-    return inputsToReturn;
+    this.setState({ customAttrs: inputsToReturn });
+  }
+
+  handleChange(e) {
+    let attr = e.target.name;
+    this.setState({ [attr]: e.target.value }, () => {
+      this.renderCustomAttr(this.props);
+    });
+  }
+
+  addToCart(e) {
+    let qty = this.props.quantity;
+    let attrs = Object.keys(this.state);
+
+    attrs = attrs.filter(a => (a !== 'quantity' && a !== 'customAttrs'));
+    console.log(attrs);
   }
 
   renderItem() {
@@ -135,11 +162,12 @@ class MerchItem extends Component {
             </div>
 
 
-            { this.renderCustomAttr() }
+            { this.state.customAttrs }
 
           </div>
 
           <button
+            onClick={ this.addToCart }
             className='merch-button'
             id="add-to-cart"
             style={{

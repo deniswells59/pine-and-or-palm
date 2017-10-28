@@ -23,6 +23,7 @@ class MerchList extends Component {
   renderData() {
     return (
       this.props.merch.map(m => {
+        console.log(m);
         if(m.in_stock) {
           return (
             <div className="merch-item" key={m.id}>
@@ -65,7 +66,7 @@ class MerchList extends Component {
         className='merch-container route-container'
         style={{ backgroundColor: this.props.colors.text }}
         >
-        <div className="col">
+        <div className="col merch-col">
           {this.props.merch.length > 0 ?
             this.renderData()
             :

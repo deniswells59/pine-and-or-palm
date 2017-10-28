@@ -3,16 +3,16 @@ import WooCommerceAPI from 'woocommerce-api';
 
 class MerchController {
   constructor(router) {
-      this.router = router;
-      this.registerRoutes();
+    this.router = router;
+    this.registerRoutes();
 
-      this.WooCommerce = new WooCommerceAPI({
-        url: 'http://pineandorpalm.com:8080',
-        consumerKey: process.env.WC_CONSUMER_KEY,
-        consumerSecret: process.env.WC_SECRET,
-        wpAPI: true,
-        version: 'wc/v1'
-      });
+    this.WooCommerce = new WooCommerceAPI({
+      url: 'http://pineandorpalm.com:8080',
+      consumerKey: process.env.WC_CONSUMER_KEY,
+      consumerSecret: process.env.WC_SECRET,
+      wpAPI: true,
+      version: 'wc/v1'
+    });
   }
 
   registerRoutes() {
