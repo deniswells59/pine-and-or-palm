@@ -4,7 +4,10 @@ import ttl from 'mongoose-ttl';
 
 const cartSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now, index: { expires: 3000 } },
-  items:[{ type: Object }]
+  items:[{
+    id: { type: String, required: true },
+    variationId: { type: String },
+  }]
 }, { timestamps: true });
 
 cartSchema.plugin(ttl, {

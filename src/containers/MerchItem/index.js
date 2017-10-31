@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchOne, receiveOne } from '../../actions/merchActions';
+import { sendCart } from '../../actions/cartActions';
 
 import NavAnimation from '../../components/NavAnimation';
 import ItemInput from '../../components/ItemInput';
@@ -26,7 +27,7 @@ class MerchItem extends Component {
   }
 
   componentWillMount() {
-    this.props.merchActions.fetchOne(this.props.match.params.id); // Get Item
+    this.props.actions.fetchOne(this.props.match.params.id); // Get Item
     this.props.routeChange(this.props.location);
   }
 
@@ -118,11 +119,16 @@ class MerchItem extends Component {
   }
 
   addToCart(e) {
-    let qty = this.props.quantity;
-    let attrs = Object.keys(this.state);
+    let item  = this.props.item;
+    let qty   = this.state.quantity;
+    let attrs = item.attributes.map(a => {
+      let name = a.name.toLowerCase();
+      return {
+        [name]: this.state[name],
+      }
+    });
 
-    attrs = attrs.filter(a => (a !== 'quantity' && a !== 'customAttrs'));
-    console.log(attrs);
+    this.props.actions.sendCart({ item, qty, attrs });
   }
 
   renderItem() {
@@ -207,7 +213,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    merchActions: bindActionCreators({ fetchOne }, dispatch)
+    actions: bindActionCreators({ fetchOne, sendCart }, dispatch)
   };
 }
 

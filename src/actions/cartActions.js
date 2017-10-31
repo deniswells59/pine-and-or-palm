@@ -1,26 +1,23 @@
 import * as types from './actionTypes';
 import axios from 'axios';
 
-let merchStore = [];
-
 function url(route) {
   return `/api${route ? route : ''}`;
 }
 
-export function receiveMerch(data) {
-  return { type: types.RECEIVE_MERCH, merch: data };
+export function receiceSession(data) {
+  return { type: types.RECEIVE_SESSION, session: data }
 }
 
-export function receiveOne(data) {
-  return { type: types.RECEIVE_ONE, one: data };
+export function receiveCart(data) {
+  return { type: types.RECEIVE_CART, cart: data };
 }
 
-export function fetchMerch() {
+export function sendCart(data) {
   return dispatch => {
-    axios.get(url('/merch'))
+    axios.put(url('/cart/item'), data)
       .then(response => {
-        merchStore = response.data;
-        dispatch(receiveMerch(response.data));
+        // dispatch(receiveMerch(response.data));
       })
       .catch(error => {
         console.log(error);
@@ -28,17 +25,14 @@ export function fetchMerch() {
   };
 }
 
-export function fetchOne(oneId) {
+export function fetchSession() {
   return dispatch => {
-    axios.get(url('/merch'))
-      .then(response => {
-        let one;
-
-        response.data.forEach(m => { if(m.id == oneId) one = m });
-        dispatch(receiveOne(one));
+    axios.post(url('/cart'))
+      .then(() => {
+        console.log('cookied');
       })
-      .catch(error => {
-        console.log(error);
-      });
-  };
+      .catch(err => {
+        console.log('err', err);
+      })
+  }
 }

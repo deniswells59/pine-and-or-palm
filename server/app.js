@@ -7,6 +7,7 @@ import https from 'https';
 import path from 'path';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
 import mongoose from 'mongoose';
 
 import MerchController from './controllers/merch';
@@ -46,6 +47,7 @@ app.use(require("webpack-hot-middleware")(compiler, {
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api', apiRouter);

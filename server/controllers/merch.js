@@ -4,7 +4,7 @@ import WooCommerceAPI from 'woocommerce-api';
 class MerchController {
   constructor(router) {
     this.router = router;
-    this.registerRoutes();
+    if(this.router) this.registerRoutes();
 
     this.WooCommerce = new WooCommerceAPI({
       url: 'http://pineandorpalm.com:8080',
@@ -20,14 +20,26 @@ class MerchController {
   }
 
   getMerch(req, res) {
-    this.WooCommerce.getAsync('products')
-      .then(result => {
-        let data = result.body;
+    this.returnMerch()
+      .then(data => {
         res.send(data);
       })
       .catch(err => {
         res.status(400).send(err);
-      });
+      })
+  }
+
+  returnMerch() {
+    return new Promise((resolve, reject) => {
+      return this.WooCommerce.getAsync('products')
+        .then(result => {
+          let data = result.body;
+          return resolve(data);
+        })
+        .catch(err => {
+          return reject(err);
+        });
+    })
   }
 }
 

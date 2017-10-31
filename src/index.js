@@ -8,7 +8,7 @@ import { AppContainer } from 'react-hot-loader';
 import configureStore from './store/configureStore';
 
 import { convertHex, transition } from './common';
-import App from './components/App';
+import App from './containers/App';
 
 import './style.css';
 
@@ -30,8 +30,8 @@ const render = Component => {
 render(App);
 
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
-    const newApp = require('./components/App').default;
+  module.hot.accept('./containers/App', () => {
+    const newApp = require('./containers/App').default;
     render(newApp);
   });
 }

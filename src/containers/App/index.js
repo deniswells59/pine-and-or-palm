@@ -2,15 +2,20 @@ import React, { Component } from 'react';
 import { Route } from 'react-router';
 import { BrowserRouter } from 'react-router-dom';
 
-import Home from '../Home';
-import Photos from '../Photos';
-import TripButton from '../Photos/components/TripButton';
-import MerchList from '../../containers/MerchList';
-import MerchItem from '../../containers/MerchItem';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import Home from '../../components/Home';
+import Photos from '../../components/Photos';
+import TripButton from '../../components/Photos/components/TripButton';
+import MerchList from '../MerchList';
+import MerchItem from '../MerchItem';
 
 import Header from './components/Header.js';
 import RouteContainer from './components/RouteContainer.js';
 import AudioPlayer from './components/AudioPlayer.js';
+
+import { fetchSession } from '../../actions/cartActions';
 
 import './style.css';
 
@@ -37,6 +42,7 @@ class App extends Component {
 
   componentDidMount() {
     this.state.interval = setInterval(this.changeColor, 20000);
+    this.props.actions.fetchSession()
   }
 
   changeColor() {
@@ -149,5 +155,19 @@ class App extends Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    item: state.item
+  };
+}
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({ fetchSession }, dispatch)
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
