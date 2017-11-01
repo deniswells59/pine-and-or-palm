@@ -18,6 +18,7 @@ class MerchItem extends Component {
 
     this.state = {
       quantity: 1,
+      cart: { inProgress: false },
       customAttrs: []
     }
 
@@ -119,22 +120,23 @@ class MerchItem extends Component {
   }
 
   addToCart(e) {
-    let item  = this.props.item;
-    let qty   = this.state.quantity;
-    let attrs = item.attributes.map(a => {
-      let name = a.name.toLowerCase();
-      return {
-        [name]: this.state[name],
-      }
-    });
+    this.setState({ cart: { inProgress: true } }, () => {
+      let item  = this.props.item;
+      let qty   = this.state.quantity;
+      let attrs = item.attributes.map(a => {
+        let name = a.name.toLowerCase();
+        return {
+          [name]: this.state[name],
+        }
+      });
 
-    this.props.actions.sendCart({ item, qty, attrs });
+      this.props.actions.sendCart({ item, qty, attrs });
+    })
   }
 
   renderItem() {
     let item = this.props.item;
-    console.log(item);
-
+    console.log(this.props);
     return (
       <div className="item-container">
 
@@ -174,6 +176,7 @@ class MerchItem extends Component {
 
           <button
             onClick={ this.addToCart }
+            disabled={ this.props.cart ? this.props.cart.inProgress : false }
             className='merch-button'
             id="add-to-cart"
             style={{
@@ -205,12 +208,6 @@ class MerchItem extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    item: state.item
-  };
-}
-
 function mapDispatchToProps(dispatch) {
   return {
     actions: bindActionCreators({ fetchOne, sendCart }, dispatch)
@@ -219,6 +216,6 @@ function mapDispatchToProps(dispatch) {
 
 export default NavAnimation(
   connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(MerchItem));

@@ -5,18 +5,29 @@ import { BrowserRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+// Route Components
 import Home from '../../components/Home';
 import Photos from '../../components/Photos';
-import TripButton from '../../components/Photos/components/TripButton';
+
+// Route Containers
 import MerchList from '../MerchList';
 import MerchItem from '../MerchItem';
+import CartContainer from '../CartContainer';
 
+// Fixed Buttons
+import TripButton from '../../components/Photos/components/TripButton';
+import CartButton from '../CartButton';
+
+// Misc
+import Loader from '../../components/Loader';
 import Header from './components/Header.js';
 import RouteContainer from './components/RouteContainer.js';
 import AudioPlayer from './components/AudioPlayer.js';
 
+// Actions
 import { fetchSession } from '../../actions/cartActions';
 
+// Style
 import './style.css';
 
 class App extends Component {
@@ -24,10 +35,11 @@ class App extends Component {
     super(props);
 
     this.state = {
-      colors: { main: '#490278',text: '#140152', accent:'#950595', name:'purp' },
-      listIndex: 0,
       trip: false,
       photos: false,
+      merch: false,
+      colors: { main: '#490278',text: '#140152', accent:'#950595', name:'purp' },
+      listIndex: 0,
       list: [
         { main: '#490278',text: '#140152', accent: '#780278', name: 'purp' },
         { main: '#5CDB95',text: '#05386B', accent: '#EDF5E1', name: 'green' },
@@ -38,6 +50,8 @@ class App extends Component {
     this.trip = this.trip.bind(this);
     this.changeColor = this.changeColor.bind(this);
     this.routeChange = this.routeChange.bind(this);
+    this.removeButtons = this.removeButtons.bind(this);
+    this.renderRoutes = this.renderRoutes.bind(this);
   }
 
   componentDidMount() {
@@ -56,31 +70,145 @@ class App extends Component {
   }
 
   routeChange(location) {
-    if(location.pathname === '/photos') {
-      this.setState({ photos: true });
-    } else {
-      this.setState({ photos: false });
+    this.removeButtons();
+    let url = location.pathname.split('/')[1];
+
+    switch (url) {
+      case 'photos':
+        this.setState({ photos: true });
+        break;
+      case 'merch':
+      case 'merch-item':
+        this.setState({ merch: true });
+        break;
+      default:
+        this.removeButtons();
     }
+  }
+
+  removeButtons() {
+    this.setState({ photos: false, merch: false });
   }
 
   trip() {
     this.setState({ trip: !this.state.trip });
   }
 
-  render() {
-    let tripButton = <div></div>;
+  renderRoutes() {
+    if(this.props.session) {
+      let tripButton = <div></div>;
+      let cartButton = <div></div>;
+
+      if(this.state.photos) {
+        tripButton = <TripButton
+                        clickHandler={ this.trip }
+                        className={ this.state.tripButton }
+                        {...this.props}
+                        {...this.state} />;
+      }
 
 
-    if(this.state.photos) {
-      tripButton = <TripButton
-                      clickHandler={ this.trip }
-                      className={ this.state.tripButton }
-                      {...this.props}
-                      {...this.state} />;
+      if(this.state.merch) {
+        cartButton = <CartButton
+                        {...this.props}
+                        {...this.state} />;
+      }
+
+      return (
+        <div>
+          <Route
+            exact
+            path="/"
+            children={({ match, ...rest }) => (
+              <RouteContainer>
+                {match && <Home
+                  routeChange={ this.routeChange }
+                  {...this.state}
+                  {...this.props}
+                  {...rest} />}
+                </RouteContainer>
+              )}/>
+
+          <Route
+            path='/photos'
+            children={ ({ match, ...rest }) => (
+              <div>
+
+                { tripButton }
+
+                <RouteContainer>
+                  {match && <Photos
+                    routeChange={ this.routeChange }
+                    {...this.state}
+                    {...this.props}
+                    {...rest} />}
+                  </RouteContainer>
+                </div>
+              )} />
+
+          <Route
+            path='/merch'
+            children={ ({ match, ...rest }) => (
+              <div>
+
+                { cartButton }
+
+                <RouteContainer>
+                  {match && <MerchList
+                    routeChange={ this.routeChange }
+                    {...this.state}
+                    {...this.props}
+                    {...rest} />}
+                  </RouteContainer>
+                </div>
+              )} />
+
+          <Route
+            path='/merch-item/:id'
+            children={ ({ match, ...rest }) => (
+              <div>
+
+                { cartButton }
+
+                <RouteContainer>
+                  {match && <MerchItem
+                    match={ match }
+                    routeChange={ this.routeChange }
+                    {...this.state}
+                    {...this.props}
+                    {...rest} />}
+                  </RouteContainer>
+                </div>
+          )} />
+
+          <Route
+            path='/cart'
+            children={ ({ match, ...rest }) => (
+              <div>
+
+                { cartButton }
+
+                <RouteContainer>
+                  {match && <CartContainer
+                              match={ match }
+                              routeChange={ this.routeChange }
+                              {...this.state}
+                              {...this.props}
+                              {...rest} />}
+                  </RouteContainer>
+                </div>
+          )} />
+      </div>
+      )
+    } else {
+      return <Loader {...this.state} />
     }
+  }
 
+  render() {
     return (
       <div>
+
         <BrowserRouter>
           <div className='container'>
 
@@ -88,75 +216,24 @@ class App extends Component {
 
             <div className="body-wrapper">
 
-              <Route
-                exact
-                path="/"
-                children={({ match, ...rest }) => (
-                  <RouteContainer>
-                    {match && <Home
-                                routeChange={ this.routeChange }
-                                {...this.state}
-                                {...this.props}
-                                {...rest} />}
-                  </RouteContainer>
-              )}/>
-
-              <Route
-                path='/photos'
-                children={ ({ match, ...rest }) => (
-                  <div>
-
-                    { tripButton }
-
-                    <RouteContainer>
-                      {match && <Photos
-                                  routeChange={ this.routeChange }
-                                  {...this.state}
-                                  {...this.props}
-                                  {...rest} />}
-                    </RouteContainer>
-                  </div>
-              )} />
-
-              <Route
-                path='/merch'
-                children={ ({ match, ...rest }) => (
-                  <div>
-                    <RouteContainer>
-                      {match && <MerchList
-                                  routeChange={ this.routeChange }
-                                  {...this.state}
-                                  {...this.props}
-                                  {...rest} />}
-                    </RouteContainer>
-                  </div>
-              )} />
-
-              <Route
-                path='/merch-item/:id'
-                children={ ({ match, ...rest }) => (
-                  <RouteContainer>
-                    {match && <MerchItem
-                                match={ match }
-                                routeChange={ this.routeChange }
-                                {...this.state}
-                                {...this.props}
-                                {...rest} />}
-                  </RouteContainer>
-              )} />
+              { this.renderRoutes() }
 
             </div>
 
-            <AudioPlayer {...this.state} />
-
-        </div>
+          </div>
         </BrowserRouter>
+
+        <AudioPlayer {...this.state} />
+
       </div>
     );
   }
 }
 function mapStateToProps(state) {
   return {
+    cart: state.cart,
+    session: state.session,
+    merch: state.merch,
     item: state.item
   };
 }

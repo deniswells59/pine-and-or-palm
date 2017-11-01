@@ -1,6 +1,6 @@
 import axios  from 'axios';
 import jwt    from 'jsonwebtoken';
-import { times } from 'async-promises';
+import times  from 'async/times';
 
 import MerchController from './merch';
 import Cart from '../models/Cart';
@@ -28,9 +28,9 @@ class CartController {
   }
 
   sendCart(req, res) {
-    if(!req.query.sessionId) return this.createCart(req, res); // Get this guy out of here
+    if(!req.cookies.sessionId) return this.createCart(req, res); // Get this guy out of here
 
-    this.convertJWT(req.query.sessionId)
+    this.convertJWT(req.cookies.sessionId)
       .then(decoded => {
         let sessionId = decoded.sessionId;
         return Cart.findById(sessionId);
@@ -57,14 +57,14 @@ class CartController {
         })
         .then(existingCart => {
           if(existingCart && existingCart._id) {
-            return res.end();
+            return res.send(req.cookies.sessionId);
           }
           return Cart.create({});
         })
         .then(cart => {
           // Encrypt because why not?
           let sessionId = jwt.sign({ sessionId: cart._id }, process.env.JWT_SECRET);
-          return res.cookie('sessionId', sessionId).end();
+          return res.cookie('sessionId', sessionId).send(sessionId);
         })
         .catch(err => {
           return res.status(400).send(err);
@@ -74,7 +74,7 @@ class CartController {
       .then(cart => {
         // Encrypt because why not?
         let sessionId = jwt.sign({ sessionId: cart._id }, process.env.JWT_SECRET);
-        res.cookie('sessionId', sessionId).end();
+        res.cookie('sessionId', sessionId).send(sessionId);
       })
       .catch((err) => {
         res.status(400).send(err);
@@ -141,15 +141,19 @@ class CartController {
           }
         }
 
-        return times(quantity, (n, next) => {
-          Cart.update(
+        times(quantity, (n, next) => { // Add it per quantity
+          Cart.findOneAndUpdate(
             { _id: sessionId },
-            { $push: { items: selected }}
-          ).then(next);
+            { $push: { items: selected }},
+            { new: true },
+            (err, cart) => {
+              next(err, cart);
+            }
+          )
+        }, (err, newCart) => {
+          if(err) return res.status(400).send(err);
+          res.send(newCart[newCart.length - 1]);
         })
-      })
-      .then((err, cart) => {
-        res.end();
       })
       .catch(err => {
         res.status(400).send(err);

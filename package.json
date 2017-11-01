@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "async-promises": "^0.2.1",
+    "async": "^2.5.0",
     "axios": "^0.17.0",
     "babel-preset-env": "^1.6.0",
     "body-parser": "^1.18.1",

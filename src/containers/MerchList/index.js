@@ -23,7 +23,6 @@ class MerchList extends Component {
   renderData() {
     return (
       this.props.merch.map(m => {
-        console.log(m);
         if(m.in_stock) {
           return (
             <div className="merch-item" key={m.id}>
@@ -78,12 +77,6 @@ class MerchList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    merch: state.merch
-  };
-}
-
 function mapDispatchToProps(dispatch) {
   return {
     merchActions: bindActionCreators({ fetchMerch }, dispatch)
@@ -92,6 +85,6 @@ function mapDispatchToProps(dispatch) {
 
 export default NavAnimation(
   connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(MerchList));

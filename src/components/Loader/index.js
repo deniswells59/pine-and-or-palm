@@ -4,7 +4,7 @@ import './style.css';
 
 class Loader extends Component {
 
-  renderLis() {
+  renderList() {
     let lis = [];
 
     for(let i = 0; i < 6; i++) {
@@ -23,7 +23,7 @@ class Loader extends Component {
       <div className="loader-wrapper">
         <div id="loader">
           <ul>
-            { this.renderLis() }
+            { this.renderList() }
           </ul>
         </div>
       </div>
