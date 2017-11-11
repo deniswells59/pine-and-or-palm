@@ -10,13 +10,15 @@ import Home from '../../components/Home';
 import Photos from '../../components/Photos';
 
 // Route Containers
-import MerchList from '../MerchList';
-import MerchItem from '../MerchItem';
-import CartContainer from '../CartContainer';
+// import MerchList from '../MerchList';
+// import MerchItem from '../MerchItem';
+// import CartContainer from '../CartContainer';
+// import SuccessContainer from '../SuccessContainer';
+import PostContainer from '../PostContainer';
 
 // Fixed Buttons
 import TripButton from '../../components/Photos/components/TripButton';
-import CartButton from '../CartButton';
+// import CartButton from '../CartButton';
 
 // Misc
 import Loader from '../../components/Loader';
@@ -147,14 +149,12 @@ class App extends Component {
               )} />
 
           <Route
-            path='/merch'
+            path='/blog'
             children={ ({ match, ...rest }) => (
               <div>
 
-                { cartButton }
-
                 <RouteContainer>
-                  {match && <MerchList
+                  {match && <PostContainer
                     routeChange={ this.routeChange }
                     {...this.state}
                     {...this.props}
@@ -163,41 +163,7 @@ class App extends Component {
                 </div>
               )} />
 
-          <Route
-            path='/merch-item/:id'
-            children={ ({ match, ...rest }) => (
-              <div>
 
-                { cartButton }
-
-                <RouteContainer>
-                  {match && <MerchItem
-                    match={ match }
-                    routeChange={ this.routeChange }
-                    {...this.state}
-                    {...this.props}
-                    {...rest} />}
-                  </RouteContainer>
-                </div>
-          )} />
-
-          <Route
-            path='/cart'
-            children={ ({ match, ...rest }) => (
-              <div>
-
-                { cartButton }
-
-                <RouteContainer>
-                  {match && <CartContainer
-                              match={ match }
-                              routeChange={ this.routeChange }
-                              {...this.state}
-                              {...this.props}
-                              {...rest} />}
-                  </RouteContainer>
-                </div>
-          )} />
       </div>
       )
     } else {
@@ -234,7 +200,8 @@ function mapStateToProps(state) {
     cart: state.cart,
     session: state.session,
     merch: state.merch,
-    item: state.item
+    item: state.item,
+    posts: state.posts,
   };
 }
 
@@ -248,3 +215,70 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
+
+// <Route
+//   path='/merch'
+//   children={ ({ match, ...rest }) => (
+//     <div>
+//
+//       { cartButton }
+//
+//       <RouteContainer>
+//         {match && <MerchList
+//           routeChange={ this.routeChange }
+//           {...this.state}
+//           {...this.props}
+//           {...rest} />}
+//         </RouteContainer>
+//       </div>
+//     )} />
+//
+// <Route
+//   path='/merch-item/:id'
+//   children={ ({ match, ...rest }) => (
+//     <div>
+//
+//       { cartButton }
+//
+//       <RouteContainer>
+//         {match && <MerchItem
+//           match={ match }
+//           routeChange={ this.routeChange }
+//           {...this.state}
+//           {...this.props}
+//           {...rest} />}
+//         </RouteContainer>
+//       </div>
+// )} />
+//
+// <Route
+//   path='/cart'
+//   children={ ({ match, ...rest }) => (
+//     <div>
+//
+//       { cartButton }
+//
+//       <RouteContainer>
+//         {match && <CartContainer
+//                     match={ match }
+//                     routeChange={ this.routeChange }
+//                     {...this.state}
+//                     {...this.props}
+//                     {...rest} />}
+//         </RouteContainer>
+//       </div>
+// )} />
+// <Route
+//   path='/success'
+//   children={ ({ match, ...rest }) => (
+//     <div>
+//       <RouteContainer>
+//         {match && <SuccessContainer
+//                     match={ match }
+//                     routeChange={ this.routeChange }
+//                     {...this.state}
+//                     {...this.props}
+//                     {...rest} />}
+//         </RouteContainer>
+//       </div>
+// )} />

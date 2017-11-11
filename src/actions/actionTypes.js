@@ -10,3 +10,6 @@ export const RECEIVE_CART = 'RECEIVE_CART';
 
 export const FETCH_SESSION = 'FETCH_SESSION';
 export const RECEIVE_SESSION = 'RECEIVE_SESSION';
+
+export const FETCH_POSTS = 'FETCH_POSTS';
+export const RECEIVE_POSTS = 'RECEIVE_POSTS';

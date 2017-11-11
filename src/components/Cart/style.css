@@ -1,0 +1,7 @@
+.cart-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100vw;
+  min-height: 85vh;
+  overflow: hidden;
+}

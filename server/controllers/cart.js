@@ -27,6 +27,21 @@ class CartController {
     })
   }
 
+  getCart(jwt) {
+    return new Promise((resolve, reject) => {
+      this.convertJWT(jwt)
+        .then(decoded => {
+          return Cart.findById(decoded.sessionId);
+        })
+        .then(cart => {
+          return resolve(cart);
+        })
+        .catch(err => {
+          return reject(err);
+        })
+      })
+  }
+
   sendCart(req, res) {
     if(!req.cookies.sessionId) return this.createCart(req, res); // Get this guy out of here
 

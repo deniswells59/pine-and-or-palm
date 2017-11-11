@@ -12,6 +12,7 @@ import mongoose from 'mongoose';
 
 import MerchController from './controllers/merch';
 import CartController from './controllers/cart';
+import CheckoutController from './controllers/checkout';
 
 const webpack = require('webpack');
 const webpackConfig = require('../webpack.config');
@@ -52,8 +53,9 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api', apiRouter);
 
-const mc = new MerchController(apiRouter);
-const cc = new CartController(apiRouter);
+// const mc =  new MerchController(apiRouter);
+// const cc =  new CartController(apiRouter);
+// const chc = new CheckoutController(apiRouter);
 
 app.use('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'))

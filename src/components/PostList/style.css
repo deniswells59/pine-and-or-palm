@@ -1,0 +1,30 @@
+.post-container {
+  position: relative;
+  display: inline-block;
+  height: 100vh;
+  width: 100vw;
+}
+
+.post-list {
+  width: 60%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 2em;
+}
+
+.post h3 {
+  font-family: 'Rubik Mono One', sans-serif;
+  font-weight: 100;
+  font-size: 1.5em;
+}
+
+.excerpt-wrapper {
+  font-family: 'Open Sans';
+  font-size: .8em;
+}
+
+.post {
+  padding: 3em 1em;
+  border-bottom: 1px solid;
+}

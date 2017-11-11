@@ -12,13 +12,22 @@ class Nav extends Component {
     return (
       <div className='nav-wrapper'>
         <Link
-            id='home'
+            id='photos'
             className='link'
-            to='/'
+            to='/photos'
             style={{
               color: this.props.colors.accent,
               backgroundColor: this.props.colors.text,
-            }}>Home</Link>
+            }}>About</Link>
+        <Link
+            id='blog'
+            className='link'
+            to='/blog'
+            style={{
+              color: this.props.colors.accent,
+              backgroundColor: this.props.colors.text,
+            }}>Blog</Link>
+
         <Link
             id='photos'
             className='link'
@@ -27,14 +36,7 @@ class Nav extends Component {
               color: this.props.colors.accent,
               backgroundColor: this.props.colors.text,
             }}>Photos</Link>
-        <Link
-            id='merch'
-            className='link'
-            to='/merch'
-            style={{
-              color: this.props.colors.accent,
-              backgroundColor: this.props.colors.text,
-            }}>Merch</Link>
+
 
       </div>
     );

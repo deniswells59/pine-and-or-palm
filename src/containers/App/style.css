@@ -166,7 +166,7 @@ button#pause {
 .nav-wrapper {
   position: absolute;
   top: 268px;
-  right: -210px;
+  right: -206px;
   margin: 0em 2em;
   transform: rotate(-90deg);
 }
