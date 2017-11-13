@@ -1,6 +1,6 @@
 import { RECEIVE_POSTS, FETCH_POSTS } from '../actions/actionTypes';
 
-export default function merch(state = {}, action) {
+export default function blog(state = {}, action) {
   let newState;
   switch (action.type) {
     case FETCH_POSTS:

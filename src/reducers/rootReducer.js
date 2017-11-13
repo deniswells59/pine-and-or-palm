@@ -1,16 +1,18 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import merch from './merchReducer';
 import item from './itemReducer';
 import cart from './cartReducer';
 import session from './sessionReducer';
-import posts from './postsReducer';
+import blog from './blogReducer';
+import post from './postReducer';
 
 const rootReducer = combineReducers({
   merch,
   item,
   cart,
   session,
-  posts
+  blog,
+  post
 });
 
 export default rootReducer;

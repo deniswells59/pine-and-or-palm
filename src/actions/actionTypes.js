@@ -13,3 +13,5 @@ export const RECEIVE_SESSION = 'RECEIVE_SESSION';
 
 export const FETCH_POSTS = 'FETCH_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
+export const FETCH_ONE_POST = 'FETCH_ONE_POST';
+export const RECEIVE_ONE_POST = 'RECEIVE_ONE_POST';

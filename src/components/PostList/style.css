@@ -1,11 +1,11 @@
-.post-container {
+.blog-container {
   position: relative;
   display: inline-block;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
 }
 
-.post-list {
+.blog-list {
   width: 60%;
   max-width: 900px;
   margin-left: auto;
@@ -13,7 +13,7 @@
   margin-top: 2em;
 }
 
-.post h3 {
+.blog h3 {
   font-family: 'Rubik Mono One', sans-serif;
   font-weight: 100;
   font-size: 1.5em;
@@ -24,7 +24,18 @@
   font-size: .8em;
 }
 
-.post {
+.blog {
   padding: 3em 1em;
   border-bottom: 1px solid;
+}
+
+.blog-link-wrapper {
+  margin-top: 2em;
+}
+
+.blog a {
+  font-family: 'Rubik Mono One', sans-serif;
+  text-decoration: none;
+  border: 3px solid;
+  padding: 0.4em 1em;
 }

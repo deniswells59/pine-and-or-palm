@@ -14,6 +14,7 @@ import Photos from '../../components/Photos';
 // import MerchItem from '../MerchItem';
 // import CartContainer from '../CartContainer';
 // import SuccessContainer from '../SuccessContainer';
+import BlogListContainer from '../BlogListContainer';
 import PostContainer from '../PostContainer';
 
 // Fixed Buttons
@@ -154,7 +155,23 @@ class App extends Component {
               <div>
 
                 <RouteContainer>
+                  {match && <BlogListContainer
+                    routeChange={ this.routeChange }
+                    {...this.state}
+                    {...this.props}
+                    {...rest} />}
+                  </RouteContainer>
+                </div>
+              )} />
+
+          <Route
+            path='/blogpost/:id'
+            children={ ({ match, ...rest }) => (
+              <div>
+
+                <RouteContainer>
                   {match && <PostContainer
+                    match={ match }
                     routeChange={ this.routeChange }
                     {...this.state}
                     {...this.props}
@@ -201,7 +218,8 @@ function mapStateToProps(state) {
     session: state.session,
     merch: state.merch,
     item: state.item,
-    posts: state.posts,
+    blog: state.blog,
+    post: state.post,
   };
 }
 
