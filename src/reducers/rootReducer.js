@@ -5,6 +5,7 @@ import cart from './cartReducer';
 import session from './sessionReducer';
 import blog from './blogReducer';
 import post from './postReducer';
+import wp from './wpReducer';
 
 const rootReducer = combineReducers({
   merch,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   cart,
   session,
   blog,
-  post
+  post,
+  wp
 });
 
 export default rootReducer;

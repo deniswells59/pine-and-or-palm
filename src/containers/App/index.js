@@ -29,6 +29,7 @@ import AudioPlayer from './components/AudioPlayer.js';
 
 // Actions
 import { fetchSession } from '../../actions/cartActions';
+import { fetchHome } from '../../actions/wpActions';
 
 // Style
 import './style.css';
@@ -57,8 +58,12 @@ class App extends Component {
     this.renderRoutes = this.renderRoutes.bind(this);
   }
 
+  componentWillMount() {
+    this.props.actions.fetchHome();
+  }
+
   componentDidMount() {
-    this.state.interval = setInterval(this.changeColor, 20000);
+    this.state.interval = setInterval(this.changeColor, 15000);
     this.props.actions.fetchSession()
   }
 
@@ -220,12 +225,13 @@ function mapStateToProps(state) {
     item: state.item,
     blog: state.blog,
     post: state.post,
+    wp:   state.wp,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ fetchSession }, dispatch)
+    actions: bindActionCreators({ fetchSession, fetchHome }, dispatch)
   };
 }
 

@@ -8,7 +8,7 @@ nav, footer {
 nav, footer, img.logo,
 h2.song-title, .song-break, .social a,
 .controls, .controls button, div.icon-border,
-a.link, .photo-container {
+a.link, .photo-container, .route-container, .post-container {
   -webkit-transition: all 1.2s ease-out;
   -moz-transition: all 1.2s ease-out;
   -o-transition: all 1.2s ease-out;
@@ -163,7 +163,7 @@ button#pause {
   height: 42px;
   width: 42px;
 }
-.nav-wrapper {
+.lrg-menu {
   position: absolute;
   top: 268px;
   right: -206px;
@@ -186,4 +186,47 @@ a.link {
   margin-left: auto;
   margin-right: auto;
   padding: 30px 0;
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media only screen
+and (max-device-width : 768px) {
+  .lrg-menu {
+    display: none;
+  }
+
+  .social {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+    position: absolute;
+    top: 0;
+  }
+
+  .nav-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    transform: none;
+  }
+
+  a.link {
+    background-color: black;
+    padding: 1em;
+    text-decoration: none;
+    font-family: 'Rubik Mono One', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    font-size: 1.4em;
+  }
+
+  .mobile-menu i.icon-menu {
+    position: absolute;
+  }
 }

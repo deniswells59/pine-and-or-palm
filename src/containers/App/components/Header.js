@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+
 import Nav from './Nav';
 
 class Header extends Component {
@@ -28,9 +30,11 @@ class Header extends Component {
             {...this.props} />
         </div>
         <div className="title-wrapper">
-          <img
-            className='logo'
-            src={`/assets/pandpheart_${this.props.colors.name}.png`} alt=""/>
+          <Link to='/'>
+            <img
+              className='logo'
+              src={`/assets/pandpheart_${this.props.colors.name}.png`} alt=""/>
+          </Link>
         </div>
 
         <Nav {...this.props}/>

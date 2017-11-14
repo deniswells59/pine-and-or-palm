@@ -3,7 +3,6 @@
   display: inline-block;
   height: 90vh;
   width: 100vw;
-  overflow: hidden;
 }
 
 .canvas-container {
@@ -14,17 +13,28 @@
   width:100vw;
 }
 
-.album-art {
-  height: 400px;
-  width: 400px;
-  background-color: orange;
+.announce-container {
   position: absolute;
-  top: 15%;
   left: 0;
   right: 0;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  font-family: 'Liquido';
-  font-size: 3em;
+  margin-top: 2em;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 400px;
+}
+
+.art img {
+  width: 100%;
+}
+
+.announce-container {
+  font-family: 'Rubik Mono One', sans-serif;
+}
+
+.info {
+  padding: 0.001em 1em 0.9em;
 }

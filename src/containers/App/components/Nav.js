@@ -11,7 +11,8 @@ class Nav extends Component {
 
     return (
       <div className='nav-wrapper'>
-        <Link
+        <div className='lrg-menu'>
+          <Link
             id='photos'
             className='link'
             to='/photos'
@@ -19,7 +20,7 @@ class Nav extends Component {
               color: this.props.colors.accent,
               backgroundColor: this.props.colors.text,
             }}>About</Link>
-        <Link
+          <Link
             id='blog'
             className='link'
             to='/blog'
@@ -28,7 +29,7 @@ class Nav extends Component {
               backgroundColor: this.props.colors.text,
             }}>Blog</Link>
 
-        <Link
+          <Link
             id='photos'
             className='link'
             to='/photos'
@@ -36,8 +37,37 @@ class Nav extends Component {
               color: this.props.colors.accent,
               backgroundColor: this.props.colors.text,
             }}>Photos</Link>
+        </div>
 
-
+        <div className='mobile-menu'>
+          <i className='icon-menu'></i>
+            <div className='mobile-nav'>
+              <Link
+                id='photos'
+                className='link'
+                to='/photos'
+                style={{
+                  color: this.props.colors.accent,
+                  backgroundColor: this.props.colors.text,
+                }}>About</Link>
+              <Link
+                id='blog'
+                className='link'
+                to='/blog'
+                style={{
+                  color: this.props.colors.accent,
+                  backgroundColor: this.props.colors.text,
+                }}>Blog</Link>
+              <Link
+                id='photos'
+                className='link'
+                to='/photos'
+                style={{
+                  color: this.props.colors.accent,
+                  backgroundColor: this.props.colors.text,
+                }}>Photos</Link>
+            </div>
+        </div>
       </div>
     );
   }

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+import Loader from '../Loader';
 import NavAnimation from '../NavAnimation';
 
 import './style.css';
@@ -44,6 +46,10 @@ class Home extends Component {
     this.props.routeChange(this.props.location);
     this.init();
     this.step();
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.setState({ colorObj: newProps.convertHex(newProps.colors.accent) });
   }
 
   init() {
@@ -105,7 +111,7 @@ class Home extends Component {
         let c = list[i];
         if(!c.size) c.size = 2;//random(-2, 3);
 
-        this.createNode(c, w, b, this.props.convertHex(this.props.colors.accent));
+        this.createNode(c, w, b, this.state ? this.state.colorObj : { r: 0, g:0, b:0 });
       }
 
       ctx.putImageData( a, 0, 0 );
@@ -132,10 +138,26 @@ class Home extends Component {
           id="canvas-container"
           className="canvas-container"
           ></div>
+        { this.props.wp && this.props.wp.acf ?
+          <div className='announce-container'>
+            <div className='art'>
+              <img src={this.props.wp.acf.image} alt=""/>
+            </div>
 
-        <div className="album-art">
-          <h3>This is album art</h3>
-        </div>
+            <div
+              className='info'
+              style={{ backgroundColor: this.props.colors.text }}>
+              <h2
+                style={{ color: this.props.colors.accent }}>
+                {this.props.wp.acf.title}</h2>
+              <div
+                style={{ color: this.props.colors.main }}
+                dangerouslySetInnerHTML={{__html: this.props.wp.acf.info}}></div>
+            </div>
+          </div>
+          :
+          <Loader {...this.props} />
+        }
       </div>
     );
   }
