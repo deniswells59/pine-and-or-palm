@@ -9,17 +9,23 @@ const NavAnimation = WrappedComponent => class NavAnimation
     this.state = {
       animate: new Animated.Value(1)
     };
+
+    this.root = document.getElementById('root');
   }
 
   componentWillAppear(cb) {
+    this.root.style.overflow = 'scroll';
     Animated.timing(this.state.animate, { toValue: 0, duration: 0 }).start();
     cb();
   }
 
   componentWillEnter(cb) {
-    window.scrollTo(0, 0);
+    root.scrollTo(0, 0);
     setTimeout(
-      () => Animated.timing(this.state.animate, { toValue: 0, duration: 1000 }).start(),
+      () => {
+        this.root.style.overflow = 'scroll';
+        Animated.timing(this.state.animate, { toValue: 0, duration: 1000 }).start()
+      },
       250
     );
 
@@ -27,6 +33,7 @@ const NavAnimation = WrappedComponent => class NavAnimation
   }
 
   componentWillLeave(cb) {
+    this.root.style.overflow = 'hidden';
     Animated.timing(this.state.animate, { toValue: -1, duration: 1000 }).start();
     setTimeout(() => cb(), 1000);
   }

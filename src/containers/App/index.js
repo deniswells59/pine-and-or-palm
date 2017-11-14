@@ -63,7 +63,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.state.interval = setInterval(this.changeColor, 15000);
+    this.state.interval = /*setInterval(this.changeColor, 15000)*/ this.changeColor();
     this.props.actions.fetchSession()
   }
 
