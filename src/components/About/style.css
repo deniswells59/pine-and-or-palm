@@ -1,0 +1,26 @@
+.about-container {
+  min-height: 100vh;
+}
+
+.about-content {
+  margin-top: 3em;
+  padding-bottom: 6em;
+}
+
+h2.about-title {
+  font-family: 'Liquido';
+  text-align: center;
+  margin: 0;
+  font-size: 3.5em;
+  padding-top: 1em;
+  letter-spacing: 2px;
+}
+
+.about-content p {
+  margin: -3px 0;
+  padding: 1em 2em;
+}
+
+.about-content p:first-of-type {
+  padding-top: 3em;
+}

@@ -58,13 +58,9 @@ class Photos extends Component {
 
   render() {
     let loader = <div className='end'></div>;
-    let prev = '/assets/gallery/prev/';
-    let full = '/assets/gallery/full/';
 
-    if(this.props.trip) {
-      prev = '/assets/gallery/trip_prev/';
-      full = '/assets/gallery/trip/';
-    }
+    let full = '/assets/gallery/full/';
+    let trip = '/assets/gallery/trip/';
 
     if(this.state.loading) {
       loader =   <Loader
@@ -81,12 +77,21 @@ class Photos extends Component {
 
         <div className="col">
           { this.state.images.map((i, idx) => {
-            return <div
-                    key={idx}
-                    className='gallery-img'
-                    style={{
-                      backgroundImage: `url(${full}${i})`
-                    }}></div>
+            return (
+              <div
+                key={idx}
+                className='img-wrapper'>
+                <img
+                  className='gallery-img-abs'
+                  src={`${trip}${i}`}
+                  style={{
+                    opacity: this.props.trip ? 1 : 0
+                  }}/>
+                <img
+                  className={ this.props.trip ? 'gallery-img trip' : 'gallery-img'}
+                  src={`${full}${i}`} />
+              </div>
+            )
           })}
 
           { loader  }

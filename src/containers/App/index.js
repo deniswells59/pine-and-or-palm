@@ -16,6 +16,7 @@ import Photos from '../../components/Photos';
 // import SuccessContainer from '../SuccessContainer';
 import BlogListContainer from '../BlogListContainer';
 import PostContainer from '../PostContainer';
+import AboutContainer from '../AboutContainer';
 
 // Fixed Buttons
 import TripButton from '../../components/Photos/components/TripButton';
@@ -189,6 +190,22 @@ class App extends Component {
                 </div>
               )} />
 
+          <Route
+            path='/about'
+            children={ ({ match, ...rest }) => (
+              <div>
+
+                <RouteContainer>
+                  {match && <AboutContainer
+                    match={ match }
+                    routeChange={ this.routeChange }
+                    {...this.state}
+                    {...this.props}
+                    {...rest} />}
+                  </RouteContainer>
+                </div>
+              )} />
+
 
       </div>
       )
@@ -222,6 +239,7 @@ class App extends Component {
   }
 }
 function mapStateToProps(state) {
+
   return {
     cart: state.cart,
     session: state.session,

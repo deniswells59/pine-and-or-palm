@@ -8,8 +8,8 @@ nav, footer {
 nav, footer, img.logo,
 h2.song-title, .song-break, .social a,
 .controls, .controls button, div.icon-border,
-a.link, .photo-container, .route-container, .post-container,
-.mobile-menu button, .mobile-menu i {
+a.link, .photo-container, .route-container, .post-container, h2.about-title,
+.mobile-nav, .mobile-menu button, .mobile-menu i {
   -webkit-transition: all 1.2s ease-out;
   -moz-transition: all 1.2s ease-out;
   -o-transition: all 1.2s ease-out;

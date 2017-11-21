@@ -1,14 +1,26 @@
+.img-wrapper {
+  margin: 5em 0;
+  width: 100%;
+  position: relative;
+}
+.gallery-img-abs {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  -webkit-transition: opacity 1.2s ease;
+  -moz-transition: opacity 1.2s ease;
+  -o-transition: opacity 1.2s ease;
+  transition: opacity 1.2s ease;
+}
+.gallery-img-abs.trip {
+  opacity: 1;
+}
 .gallery-img {
   width: 100%;
-  height: 500px;
-  background-repeat: no-repeat;
-  background-size: auto 100%;
-  background-position: 50% 50%;
-  margin: 5em 0;
-  -webkit-transition: background-image 1.4s ease;
-  -moz-transition: background-image 1.4s ease;
-  -o-transition: background-image 1.4s ease;
-  transition: background-image 1.4s ease;
+  height: auto;
 }
 button#trip {
   position: fixed;
@@ -23,10 +35,6 @@ button.trip-button {
   font-size: 3em;
   padding: .4em;
   z-index: 10000;
-  -webkit-transition: color 1s ease-out;
-  -moz-transition: color 1s ease-out;
-  -o-transition: color 1s ease-out;
-  transition: color 1s ease-out;
 }
 
 button.show {
