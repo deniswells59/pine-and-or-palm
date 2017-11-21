@@ -44,8 +44,10 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.routeChange(this.props.location);
-    this.init();
-    this.step();
+    if(window.innerWidth > 768) {
+      this.init();
+      this.step();
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -145,8 +147,7 @@ class Home extends Component {
             </div>
 
             <div
-              className='info'
-              style={{ backgroundColor: this.props.colors.text }}>
+              className='info'>
               <h2
                 style={{ color: this.props.colors.accent }}>
                 {this.props.wp.acf.title}</h2>

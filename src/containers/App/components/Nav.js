@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import Icon from './Icon';
 class Nav extends Component {
   constructor(props) {
     super(props);
@@ -53,7 +54,7 @@ class Nav extends Component {
         <div
           className='mobile-menu'
           style={{
-            right: this.state.open ? '-20vw' : '-104vw'
+            right: this.state.open ? '-20vw' : '-108vw'
           }}>
 
           <button
@@ -89,6 +90,28 @@ class Nav extends Component {
                 link='/photos'
                 title='Photos' />
 
+              <div className='social'>
+                <Icon
+                  {...this.props}
+                  icon='icon-facebook'
+                  link='google.com'/>
+                <Icon
+                  icon='icon-instagram'
+                  link='google.com'
+                  {...this.props} />
+                <Icon
+                  icon='icon-twitter'
+                  link='google.com'
+                  {...this.props} />
+                <Icon
+                  icon='icon-spotify'
+                  link='google.com'
+                  {...this.props} />
+                <Icon
+                  icon='icon-bandcamp'
+                  link='google.com'
+                  {...this.props} />
+              </div>
             </div>
         </div>
       </div>

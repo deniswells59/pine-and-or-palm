@@ -1,11 +1,14 @@
 .gallery-img {
   width: 100%;
-  height: auto;
-  padding: 40px 0;
-  -webkit-transition: color 1s ease-out;
-  -moz-transition: color 1s ease-out;
-  -o-transition: color 1s ease-out;
-  transition: color 1s ease-out;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: 50% 50%;
+  margin: 5em 0;
+  -webkit-transition: background-image 1.4s ease;
+  -moz-transition: background-image 1.4s ease;
+  -o-transition: background-image 1.4s ease;
+  transition: background-image 1.4s ease;
 }
 button#trip {
   position: fixed;

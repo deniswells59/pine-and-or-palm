@@ -20,8 +20,11 @@ class Loader extends Component {
 
   render() {
     return (
-      <div className="loader-wrapper">
-        <div id="loader">
+      <div
+        id={this.props.relative ? 'relative' : ''}
+        className="loader-wrapper">
+        <div
+          id='loader'>
           <ul>
             { this.renderList() }
           </ul>

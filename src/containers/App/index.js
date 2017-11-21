@@ -63,8 +63,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.state.interval = /*setInterval(this.changeColor, 15000)*/ this.changeColor();
+    this.state.interval = setInterval(this.changeColor, 15000);
     this.props.actions.fetchSession()
+    setTimeout(function(){
+        // This hides the address bar maybw probably not:
+        document.querySelector('body').scrollTo(0, 1);
+    }, 0);
   }
 
   changeColor() {

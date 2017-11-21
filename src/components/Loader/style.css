@@ -1,6 +1,9 @@
 .loader-wrapper {
   height: 100vh;
 }
+.loader-wrapper#relative {
+  height: 200px;
+}
 #loader {
   position: absolute;
   margin: auto;
@@ -69,4 +72,11 @@
 #loader li:nth-child(6) {
   left: 75px;
   animation: sequence2 1s ease infinite 0.5s;
+}
+#relative #loader {
+  position: relative;
+  top: 100px;
+}
+div.end {
+  height: 200px;
 }

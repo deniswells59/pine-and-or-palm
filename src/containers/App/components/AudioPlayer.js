@@ -12,7 +12,7 @@ class AudioPlayer extends Component {
       translate3d: 0,
       marquee: null,
       playing: false,
-      trackList: ['dakota', 'for_loko_ono', 'i_killed_jfk', 'engineer_song'],
+      trackList: ['dakota', 'i_killed_jfk', 'four_loko_ono', 'engineer_song'],
       track: 'dakota'
     }
 
@@ -25,24 +25,22 @@ class AudioPlayer extends Component {
   }
 
   componentDidMount() {
-    this.setState({ player: document.querySelector('#audio') });
+    this.setState({ player: document.querySelector('#audio') }, () => {
+      this.state.player.addEventListener('ended', this.next);
+    });
     document.body.onkeyup = this.handleSpacebar;
-    this.interval = setInterval(this.checkMarquee, 500);
   }
 
   componentWillUnmount() {
+    this.state.player.removeEventListener('ended', this.next);
     document.body.onkeyup = null;
-  }
-
-  checkMarquee() {
-
   }
 
   handleSpacebar(e) {
     if(e.keyCode === 32 && e.target === document.body) {
       e.preventDefault();
       this.pause();
-      
+
       return false;
     }
   }
@@ -53,6 +51,7 @@ class AudioPlayer extends Component {
     } else {
       this.state.player.play();
     }
+
     this.setState({ playing: !this.state.playing });
   }
 
@@ -97,7 +96,7 @@ class AudioPlayer extends Component {
       <div className="audio-player">
 
         <audio id="audio" preload="auto">
-          <source src={ `./assets/${this.state.track}.m4a`} />
+          <source src={ `./assets/${this.state.track}.wav`} />
         </audio>
 
         <div

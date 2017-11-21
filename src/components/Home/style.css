@@ -9,7 +9,7 @@
   position:absolute;
   left:0;
   top:0;
-  height: 100vh;
+  height: 90vh;
   width:100vw;
 }
 
@@ -22,9 +22,7 @@
   text-align: center;
   margin-top: 2em;
   width: 90%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 400px;
+  max-width: 500px;
 }
 
 .art img {
@@ -37,4 +35,6 @@
 
 .info {
   padding: 0.001em 1em 0.9em;
+  position: absolute;
+  top: 25%;
 }
