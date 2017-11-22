@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import * as Animated from "animated/lib/targets/react-dom";
+import React, { Component } from 'react';
+import * as Animated from 'react-dom-animated';
 
 const NavAnimation = WrappedComponent => class NavAnimation
  extends Component {

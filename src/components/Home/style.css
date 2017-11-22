@@ -26,11 +26,12 @@
 }
 
 .art img {
-  width: 100%;
+  width: 80%;
 }
 
 .announce-container {
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'IM Fell Great Primer', serif;
+  font-style: italic;
 }
 
 .info {

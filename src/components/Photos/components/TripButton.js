@@ -96,10 +96,16 @@ class TripButton extends Component {
         id='trip'
         className='hide'
         style={{
-          backgroundImage: `linear-gradient(to bottom, ${this.state.tripColors.main}, ${this.state.tripColors.accent})`
+          backgroundImage: `linear-gradient(to bottom, ${this.state.tripColors.main}, ${this.state.tripColors.accent})`,
+          border: `6px solid ${this.props.colors.accent}`
         }}
         >
-        TRIP BALLS
+        <div className='trip-text top'>
+          TRIP
+        </div>
+        <div className='trip-text bot'>
+          BALLS
+        </div>
       </button>
     );
   }

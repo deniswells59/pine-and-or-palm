@@ -23,7 +23,9 @@ class Icon extends Component {
     }
 
     return (
-      <a href={this.props.link}>
+      <a
+        target='_blank'
+        href={this.props.link}>
          <div
            onMouseEnter={this.toggleHover}
            onMouseLeave={this.toggleHover}

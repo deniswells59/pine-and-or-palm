@@ -16,7 +16,8 @@
 .item-col {
   display: inline-block;
   width: 50%;
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'IM Fell Great Primer', serif;
+  font-style: italic;
 }
 
 .item-col p {

@@ -29,7 +29,8 @@
 
 .merch-info {
   width: 200px;
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'IM Fell Great Primer', serif;
+  font-style: italic;
   margin-top: 2em;
   margin-left: auto;
   margin-right: auto;
@@ -47,7 +48,8 @@ button.merch-button {
   width: 200px;
   border-radius: 0px;
   border: 5px solid;
-  font-family: 'Rubik Mono One', sans-serif;
+  font-family: 'IM Fell Great Primer', serif;
+  font-style: italic;
   font-size: 1.2em;
   padding: .2em 0;
 }

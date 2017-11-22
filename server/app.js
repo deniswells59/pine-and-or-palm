@@ -8,11 +8,11 @@ import path from 'path';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
 
-import MerchController from './controllers/merch';
-import CartController from './controllers/cart';
-import CheckoutController from './controllers/checkout';
+// import MerchController from './controllers/merch';
+// import CartController from './controllers/cart';
+// import CheckoutController from './controllers/checkout';
 
 const webpack = require('webpack');
 const webpackConfig = require('../webpack.config');
@@ -23,27 +23,26 @@ const apiRouter = express.Router();
 const PORT = process.env.NODE_ENV === 'prod' ? 80 : 3000;
 const server = http.createServer(app);
 
-const routes = [
-  '/',
-];
+// const MONGOURL = process.env.MONGODB_URI || 'mongodb://localhost/pineandorpalm';
+// mongoose.Promise = Promise;
+// mongoose.connect(MONGOURL, {
+//   useMongoClient: true
+// })
+//   .then(() => {
+//     console.log(`Mongo connected!`);
+//   })
 
-const MONGOURL = process.env.MONGODB_URI || 'mongodb://localhost/pineandorpalm';
-mongoose.Promise = Promise;
-mongoose.connect(MONGOURL, {
-  useMongoClient: true
-})
-  .then(() => {
-    console.log(`Mongo connected!`);
-  })
-
-app.use(require("webpack-dev-middleware")(compiler, {
-  noInfo: true, publicPath: webpackConfig.output.publicPath
-}));
-app.use(require("webpack-hot-middleware")(compiler, {
- 'log': false,
- 'path': '/__webpack_hmr',
- 'heartbeat': 10 * 1000
-}));
+if(process.env.NODE_ENV === 'dev') {
+  app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true, publicPath: webpackConfig.output.publicPath
+  }));
+  app.use(require('webpack-hot-middleware')(compiler, {
+    // 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true'
+    'log': false,
+    'path': '/__webpack_hmr',
+    'heartbeat': 10 * 1000
+  }));
+}
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());

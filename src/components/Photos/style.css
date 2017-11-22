@@ -10,10 +10,10 @@
   left: 0;
   width: 100%;
   height: auto;
-  -webkit-transition: opacity 1.2s ease;
-  -moz-transition: opacity 1.2s ease;
-  -o-transition: opacity 1.2s ease;
-  transition: opacity 1.2s ease;
+  -webkit-transition: opacity 1s ease;
+  -moz-transition: opacity 1s ease;
+  -o-transition: opacity 1s ease;
+  transition: opacity 1s ease;
 }
 .gallery-img-abs.trip {
   opacity: 1;
@@ -35,8 +35,16 @@ button.trip-button {
   font-size: 3em;
   padding: .4em;
   z-index: 10000;
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
 }
-
+.trip-text.top {
+  margin-bottom: -8px;
+}
+.trip-text.bot {
+  margin-top: -8px;
+}
 button.show {
   opacity: 1;
   -webkit-animation: appear 1s ease-in;
@@ -126,4 +134,7 @@ button.hide {
   80%  { color: #d400ff; }
   90%  { color: #ff006b; }
   100% { color: #ff0000; }
+}
+audio#hidden {
+  display: none;
 }

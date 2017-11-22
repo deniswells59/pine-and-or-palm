@@ -140,20 +140,20 @@ class Home extends Component {
           id="canvas-container"
           className="canvas-container"
           ></div>
-        { this.props.wp && this.props.wp.acf ?
+        { this.props.wp && this.props.wp.home ?
           <div className='announce-container'>
             <div className='art'>
-              <img src={this.props.wp.acf.image} alt=""/>
+              <img src={this.props.wp.home.acf.image} alt=""/>
             </div>
 
             <div
               className='info'>
               <h2
                 style={{ color: this.props.colors.accent }}>
-                {this.props.wp.acf.title}</h2>
+                {this.props.wp.home.acf.title}</h2>
               <div
                 style={{ color: this.props.colors.main }}
-                dangerouslySetInnerHTML={{__html: this.props.wp.acf.info}}></div>
+                dangerouslySetInnerHTML={{__html: this.props.wp.home.acf.info}}></div>
             </div>
           </div>
           :

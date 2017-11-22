@@ -12,22 +12,22 @@ class Header extends Component {
           <Icon
             {...this.props}
             icon='icon-facebook'
-            link='google.com'/>
+            link='https://www.facebook.com/pinenpalm/'/>
           <Icon
             icon='icon-instagram'
-            link='google.com'
+            link='https://www.instagram.com/pineandorpalm/'
             {...this.props} />
           <Icon
             icon='icon-twitter'
-            link='google.com'
+            link='https://twitter.com/pineandorpalm'
             {...this.props} />
           <Icon
             icon='icon-spotify'
-            link='google.com'
+            link='https://open.spotify.com/artist/6pCTQXENqMVBhAX4ar3n8j'
             {...this.props} />
           <Icon
             icon='icon-bandcamp'
-            link='google.com'
+            link='https://pineandpalm.bandcamp.com/'
             {...this.props} />
         </div>
         <div className="title-wrapper">

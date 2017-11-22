@@ -96,7 +96,7 @@ class AudioPlayer extends Component {
       <div className="audio-player">
 
         <audio id="audio" preload="auto">
-          <source src={ `./assets/${this.state.track}.wav`} />
+          <source src={ `./assets/${this.state.track}.mp3`} />
         </audio>
 
         <div

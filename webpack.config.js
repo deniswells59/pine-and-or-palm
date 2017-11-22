@@ -6,6 +6,12 @@ let path = require('path');
 let BUILD_DIR = path.resolve(__dirname, 'public/build/');
 let APP_DIR = path.resolve(__dirname, 'src/');
 
+let allPlugins = [];
+
+if(process.env.NODE_ENV === 'dev') {
+  allPlugins.push(new webpack.HotModuleReplacementPlugin());
+}
+
 let config = {
   entry: {
     main: [
@@ -31,13 +37,8 @@ let config = {
        use: [ 'style-loader', 'css-loader' ]
      }
    ]
-  },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ],
-  devServer: {
-    hot: true
-  }
+ },
+ plugins: allPlugins,
 };
 
 module.exports = config;
