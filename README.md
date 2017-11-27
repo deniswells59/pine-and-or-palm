@@ -15,7 +15,7 @@ A React app with a couple of cool features and all the moving parts for e-commer
 
 ## Features
 
-* [Interactive canvas animation](pineandorpalm.com) *on desktop only* (https://codepen.io/soulwire/pen/Ffvlo)
-* [Audio player](pineandorpalm.com) streaming client music for free
-* Gallery with ["trippy effects"](pineandorpalm.com/photos) buttons ([Deep Dream Generator](https://deepdreamgenerator.com/))
+* [Interactive canvas animation](http://pineandorpalm.com) *on desktop only* (https://codepen.io/soulwire/pen/Ffvlo)
+* [Audio player](http://pineandorpalm.com) streaming client music for free
+* Gallery with ["trippy effects"](http://pineandorpalm.com/photos) buttons ([Deep Dream Generator](https://deepdreamgenerator.com/))
 * Full e-commerce store (Not currently in production)
