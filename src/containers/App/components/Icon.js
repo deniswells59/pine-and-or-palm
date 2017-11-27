@@ -16,12 +16,6 @@ class Icon extends Component {
   }
 
   render() {
-    let color = this.props.colors.text;
-
-    if(this.state.hover) {
-      color = '#fcfcfc';
-    }
-
     return (
       <a
         target='_blank'
@@ -32,7 +26,7 @@ class Icon extends Component {
            className="icon-border"
            style={{
              backgroundImage: `linear-gradient(to bottom, ${this.props.colors.main}, ${this.props.colors.accent})`,
-             color
+             color: this.state.hover ? '#fcfcfc' : this.props.colors.text
            }}>
            <i className={`icon ${this.props.icon}`}></i>
          </div>

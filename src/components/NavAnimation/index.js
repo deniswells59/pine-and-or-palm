@@ -1,3 +1,5 @@
+// A left swooping animation on Route change
+
 import React, { Component } from 'react';
 import * as Animated from 'react-dom-animated';
 
@@ -13,12 +15,14 @@ const NavAnimation = WrappedComponent => class NavAnimation
     this.root = document.getElementById('root');
   }
 
+  // Coming in
   componentWillAppear(cb) {
     this.root.style.overflow = 'scroll';
     Animated.timing(this.state.animate, { toValue: 0, duration: 0 }).start();
     cb();
   }
 
+  // Coming in
   componentWillEnter(cb) {
     root.scrollTo(0, 0);
     setTimeout(
@@ -32,6 +36,7 @@ const NavAnimation = WrappedComponent => class NavAnimation
     cb();
   }
 
+  // Coming out
   componentWillLeave(cb) {
     this.root.style.overflow = 'hidden';
     Animated.timing(this.state.animate, { toValue: -1, duration: 1000 }).start();

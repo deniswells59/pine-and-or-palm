@@ -22,6 +22,8 @@ class TripButton extends Component {
 
   componentDidMount() {
     this.initTripButton();
+
+    // Waits until Route has animated
     this.setState({ button: document.getElementById('trip') }, () => {
       setTimeout(this.addButton, 900)
     });
@@ -39,6 +41,7 @@ class TripButton extends Component {
       newIndex = 0;
     }
 
+    // Start with random colors
     this.setState({
       intervalId: setInterval(this.tripTransition, 10),
       targetColors: {
@@ -66,6 +69,7 @@ class TripButton extends Component {
   }
 
   tripTransition() {
+    // Swaps colors for backgroundColor animation
     let currentColorMain = this.state.tripColors.main;
     let targetColorMain = this.state.targetColors.main;
 

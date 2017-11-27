@@ -15,7 +15,6 @@ if(process.env.NODE_ENV === 'dev') {
 let config = {
   entry: {
     main: [
-      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
       'babel-polyfill',
       APP_DIR
     ],
@@ -37,8 +36,7 @@ let config = {
        use: [ 'style-loader', 'css-loader' ]
      }
    ]
- },
- plugins: allPlugins,
+ }
 };
 
 module.exports = config;

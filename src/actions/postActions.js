@@ -13,6 +13,7 @@ export function receiveOnePost(data) {
   return { type: types.RECEIVE_ONE_POST, post: data };
 }
 
+// Grabs list of allblog post
 export function fetchPosts() {
   return dispatch => {
     axios.get(url('/posts'))
@@ -25,6 +26,7 @@ export function fetchPosts() {
   };
 }
 
+// Grabs the one post by ID
 export function fetchOnePost(id) {
   let returnObj = {};
 

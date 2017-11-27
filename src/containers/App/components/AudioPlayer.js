@@ -25,14 +25,14 @@ class AudioPlayer extends Component {
   }
 
   componentDidMount() {
-    this.setState({ player: document.querySelector('#audio') }, () => {
-      this.state.player.addEventListener('ended', this.next);
-    });
+    this.player =  document.querySelector('#audio')
+
+    this.player.addEventListener('ended', this.next);
     document.body.onkeyup = this.handleSpacebar;
   }
 
   componentWillUnmount() {
-    this.state.player.removeEventListener('ended', this.next);
+    this.player.removeEventListener('ended', this.next);
     document.body.onkeyup = null;
   }
 
@@ -47,9 +47,9 @@ class AudioPlayer extends Component {
 
   pause() {
     if(this.state.playing) {
-      this.state.player.pause();
+      this.player.pause();
     } else {
-      this.state.player.play();
+      this.player.play();
     }
 
     this.setState({ playing: !this.state.playing });
@@ -78,8 +78,8 @@ class AudioPlayer extends Component {
   }
 
   reload() {
-    this.state.player.load();
-    this.state.player.play();
+    this.player.load();
+    this.player.play();
     this.setState({ playing: true });
   }
 
@@ -89,9 +89,6 @@ class AudioPlayer extends Component {
   }
 
   render() {
-    let icon = 'icon-pause-outline';
-
-    if(!this.state.playing) icon = 'icon-play-outline';
     return (
       <div className="audio-player">
 
@@ -110,7 +107,7 @@ class AudioPlayer extends Component {
             {...this.props}
             clickHandler={ this.pause }
             id='pause'
-            icon={ icon } />
+            icon={ this.state.playing ? 'icon-pause-outline' : 'icon-play-outline' } />
           <AudioControl
             {...this.props}
             clickHandler={ this.next }

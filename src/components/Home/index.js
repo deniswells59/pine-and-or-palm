@@ -55,6 +55,8 @@ class Home extends Component {
   }
 
   init() {
+    // "Inspired" by https://codepen.io/soulwire/pen/Ffvlo?page=4
+    
     container = document.getElementById( 'canvas-container' );
     canvas = document.createElement( 'canvas' );
 
@@ -111,7 +113,7 @@ class Home extends Component {
 
       for (let i = 0; i < list.length; i++ ) {
         let c = list[i];
-        if(!c.size) c.size = 2;//random(-2, 3);
+        if(!c.size) c.size = 2;
 
         this.createNode(c, w, b, this.state ? this.state.colorObj : { r: 0, g:0, b:0 });
       }

@@ -7,8 +7,6 @@ import { receivePosts, fetchPosts } from '../actions/postActions';
 import PostList from '../components/PostList';
 import NavAnimation from '../components/NavAnimation';
 
-// import './style.css';
-
 class BlogListContainer extends Component {
   constructor(props) {
     super(props);

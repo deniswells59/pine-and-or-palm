@@ -6,7 +6,6 @@ import { fetchAbout } from '../actions/wpActions';
 
 import NavAnimation from '../components/NavAnimation';
 import About        from '../components/About';
-// import './style.css';
 
 class AboutContainer extends Component {
   constructor(props) {

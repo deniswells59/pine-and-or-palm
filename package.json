@@ -33,7 +33,7 @@
     "build-dev": "webpack --config webpack.dev.js",
     "build-prod": "webpack --config webpack.prod.js",
     "dev": "NODE_ENV=dev babel-node ./server/app.js",
-    "start": "NODE_ENV=prod ./node_modules/.bin/pm2 start ./server/app.js --interpreter babel-node"
+    "start": "NODE_ENV=production ./node_modules/.bin/pm2 start ./server/app.js --interpreter babel-node"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

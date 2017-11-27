@@ -1,3 +1,5 @@
+// Currently NOT in use
+
 import * as types from './actionTypes';
 import axios from 'axios';
 
@@ -66,7 +68,7 @@ export function sendCheckout() {
 export function checkoutStatus() {
   return dispatch => {
     if(!window.location.search) return window.location = '/';
-    
+
     axios.post(url(window.location.pathname + window.location.search)) // /success?paypalIDs
       .then(response => {
         // window.open(response.data, '_blank');

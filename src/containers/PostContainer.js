@@ -8,7 +8,6 @@ import Post from '../components/Post';
 import NavAnimation from '../components/NavAnimation';
 import Loader from '../components/Loader';
 
-// import './style.css';
 
 class PostContainer extends Component {
   constructor(props) {

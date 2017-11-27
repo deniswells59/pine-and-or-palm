@@ -17,12 +17,6 @@ class AudioControl extends Component {
   }
 
   render() {
-    let color = this.props.colors.text;
-
-    if(this.state.hover) {
-      color = '#fcfcfc';
-    }
-
     return (
       <button
         onMouseEnter={this.toggleHover}
@@ -32,7 +26,7 @@ class AudioControl extends Component {
         id={this.props.id}
         style={{
           backgroundImage: `linear-gradient(to bottom, ${this.props.colors.accent}, ${this.props.colors.main})`,
-          color
+          color: this.state.hover ? '#fcfcfc' : this.props.colors.text
         }}>
         <i className={ `icon ${this.props.icon}` }></i>
       </button>

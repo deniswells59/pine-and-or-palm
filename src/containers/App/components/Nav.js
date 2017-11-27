@@ -25,7 +25,7 @@ class Nav extends Component {
       <div className='nav-wrapper'>
         <div className='lrg-menu'>
           <Link
-            id='photos'
+            id='about'
             className='link'
             to='/about'
             style={{
@@ -48,7 +48,7 @@ class Nav extends Component {
             style={{
               color: this.props.colors.accent,
               backgroundColor: this.props.colors.text,
-            }}>Photos</Link>
+            }}>Gallery</Link>
         </div>
 
         <div
@@ -77,7 +77,7 @@ class Nav extends Component {
               <NavLink
                 {...this.props}
                 clickHandler={this.toggleMenu}
-                link='/photos'
+                link='/about'
                 title='About'  />
               <NavLink
                 {...this.props}
@@ -88,7 +88,7 @@ class Nav extends Component {
                 {...this.props}
                 clickHandler={this.toggleMenu}
                 link='/photos'
-                title='Photos' />
+                title='Gallery' />
 
               <div className='social'>
                 <Icon
@@ -114,6 +114,12 @@ class Nav extends Component {
               </div>
             </div>
         </div>
+        <div
+          style={{
+            left: this.state.open ? '0px' : '100vw'
+          }}
+          onClick={ this.toggleMenu }
+          className='nav-back'></div>
       </div>
     );
   }

@@ -1,3 +1,5 @@
+// Currently NOT in use
+
 import * as types from './actionTypes';
 import axios from 'axios';
 

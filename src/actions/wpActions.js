@@ -2,7 +2,7 @@ import * as types from './actionTypes';
 import axios from 'axios';
 
 function url(route) {
-  return `http://pineandorpalm.com:8080/wp-json/wp/v2${route ? route : ''}`;
+  return `//pineandorpalm.com:8080/wp-json/wp/v2${route ? route : ''}`;
 }
 
 export function receiveHomepage(data) {
@@ -13,6 +13,7 @@ export function receiveAbout(data) {
   return { type: types.RECEIVE_ABOUT, about: data };
 }
 
+// Grabs the Home Page
 export function fetchHome() {
   return dispatch => {
     axios.get(url('/home_page'))
@@ -25,6 +26,7 @@ export function fetchHome() {
   };
 }
 
+// Grabs the About Page
 export function fetchAbout() {
   return dispatch => {
     axios.get(url('/about'))
